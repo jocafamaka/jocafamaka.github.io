@@ -475,14 +475,6 @@ footer.light ul li a::after {
 	z-index: -10
 }
 
-.mobile {
-		display: none;
-	}
-
-	.desktop {
-		display: block;
-	}
-
 .image {
 	background: url("../img/image.jpg") center;
 	background-size: cover;
@@ -584,14 +576,6 @@ footer.light ul li a::after {
 		margin-top: 20px;
 	}
 
-	.mobile {
-		display: block;
-	}
-
-	.desktop {
-		display: none;
-	}
-
 	h1 {
 		font-size: 2rem;
 		line-height: 1.5
@@ -633,14 +617,7 @@ footer.light ul li a::after {
 		display: block;
 		padding: 5rem 0 5rem
 	}
-
-	.mobile {
-		display: block;
-	}
-
-	.desktop {
-		display: none;
-	}
+	
 	.content .content-box {
 		padding: 0 1rem
 	}
