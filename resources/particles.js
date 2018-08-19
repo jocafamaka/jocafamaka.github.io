@@ -196,25 +196,25 @@ var pJS = function(tag_id, params){
 
       window.addEventListener('resize', function(){
 
-          pJS.canvas.w = pJS.canvas.el.offsetWidth;
-          pJS.canvas.h = pJS.canvas.el.offsetHeight;
+        pJS.canvas.w = pJS.canvas.el.offsetWidth;
+        pJS.canvas.h = pJS.canvas.el.offsetHeight;
 
-          /* resize canvas */
-          if(pJS.tmp.retina){
-            pJS.canvas.w *= pJS.canvas.pxratio;
-            pJS.canvas.h *= pJS.canvas.pxratio;
-          }
+        /* resize canvas */
+        if(pJS.tmp.retina){
+          pJS.canvas.w *= pJS.canvas.pxratio;
+          pJS.canvas.h *= pJS.canvas.pxratio;
+        }
 
-          pJS.canvas.el.width = pJS.canvas.w;
-          pJS.canvas.el.height = pJS.canvas.h;
+        pJS.canvas.el.width = pJS.canvas.w;
+        pJS.canvas.el.height = pJS.canvas.h;
 
-          /* repaint canvas on anim disabled */
-          if(!pJS.particles.move.enable){
-            pJS.fn.particlesEmpty();
-            pJS.fn.particlesCreate();
-            pJS.fn.particlesDraw();
-            pJS.fn.vendors.densityAutoParticles();
-          }
+        /* repaint canvas on anim disabled */
+        if(!pJS.particles.move.enable){
+          pJS.fn.particlesEmpty();
+          pJS.fn.particlesCreate();
+          pJS.fn.particlesDraw();
+          pJS.fn.vendors.densityAutoParticles();
+        }
 
         /* density particles enabled */
         pJS.fn.vendors.densityAutoParticles();
@@ -315,31 +315,31 @@ var pJS = function(tag_id, params){
     var velbase = {}
     switch(pJS.particles.move.direction){
       case 'top':
-        velbase = { x:0, y:-1 };
+      velbase = { x:0, y:-1 };
       break;
       case 'top-right':
-        velbase = { x:0.5, y:-0.5 };
+      velbase = { x:0.5, y:-0.5 };
       break;
       case 'right':
-        velbase = { x:1, y:-0 };
+      velbase = { x:1, y:-0 };
       break;
       case 'bottom-right':
-        velbase = { x:0.5, y:0.5 };
+      velbase = { x:0.5, y:0.5 };
       break;
       case 'bottom':
-        velbase = { x:0, y:1 };
+      velbase = { x:0, y:1 };
       break;
       case 'bottom-left':
-        velbase = { x:-0.5, y:1 };
+      velbase = { x:-0.5, y:1 };
       break;
       case 'left':
-        velbase = { x:-1, y:0 };
+      velbase = { x:-1, y:0 };
       break;
       case 'top-left':
-        velbase = { x:-0.5, y:-0.5 };
+      velbase = { x:-0.5, y:-0.5 };
       break;
       default:
-        velbase = { x:0, y:0 };
+      velbase = { x:0, y:0 };
       break;
     }
 
@@ -424,60 +424,60 @@ var pJS = function(tag_id, params){
     switch(p.shape){
 
       case 'circle':
-        pJS.canvas.ctx.arc(p.x, p.y, radius, 0, Math.PI * 2, false);
+      pJS.canvas.ctx.arc(p.x, p.y, radius, 0, Math.PI * 2, false);
       break;
 
       case 'edge':
-        pJS.canvas.ctx.rect(p.x-radius, p.y-radius, radius*2, radius*2);
+      pJS.canvas.ctx.rect(p.x-radius, p.y-radius, radius*2, radius*2);
       break;
 
       case 'triangle':
-        pJS.fn.vendors.drawShape(pJS.canvas.ctx, p.x-radius, p.y+radius / 1.66, radius*2, 3, 2);
+      pJS.fn.vendors.drawShape(pJS.canvas.ctx, p.x-radius, p.y+radius / 1.66, radius*2, 3, 2);
       break;
 
       case 'polygon':
-        pJS.fn.vendors.drawShape(
-          pJS.canvas.ctx,
+      pJS.fn.vendors.drawShape(
+        pJS.canvas.ctx,
           p.x - radius / (pJS.particles.shape.polygon.nb_sides/3.5), // startX
           p.y - radius / (2.66/3.5), // startY
           radius*2.66 / (pJS.particles.shape.polygon.nb_sides/3), // sideLength
           pJS.particles.shape.polygon.nb_sides, // sideCountNumerator
           1 // sideCountDenominator
-        );
+          );
       break;
 
       case 'star':
-        pJS.fn.vendors.drawShape(
-          pJS.canvas.ctx,
+      pJS.fn.vendors.drawShape(
+        pJS.canvas.ctx,
           p.x - radius*2 / (pJS.particles.shape.polygon.nb_sides/4), // startX
           p.y - radius / (2*2.66/3.5), // startY
           radius*2*2.66 / (pJS.particles.shape.polygon.nb_sides/3), // sideLength
           pJS.particles.shape.polygon.nb_sides, // sideCountNumerator
           2 // sideCountDenominator
-        );
+          );
       break;
 
       case 'image':
 
-        function draw(){
-          pJS.canvas.ctx.drawImage(
-            img_obj,
-            p.x-radius,
-            p.y-radius,
-            radius*2,
-            radius*2 / p.img.ratio
+      function draw(){
+        pJS.canvas.ctx.drawImage(
+          img_obj,
+          p.x-radius,
+          p.y-radius,
+          radius*2,
+          radius*2 / p.img.ratio
           );
-        }
+      }
 
-        if(pJS.tmp.img_type == 'svg'){
-          var img_obj = p.img.obj;
-        }else{
-          var img_obj = pJS.tmp.img_obj;
-        }
+      if(pJS.tmp.img_type == 'svg'){
+        var img_obj = p.img.obj;
+      }else{
+        var img_obj = pJS.tmp.img_obj;
+      }
 
-        if(img_obj){
-          draw();
-        }
+      if(img_obj){
+        draw();
+      }
 
       break;
 
@@ -585,10 +585,10 @@ var pJS = function(tag_id, params){
       /* out of canvas modes */
       switch(pJS.particles.move.out_mode){
         case 'bounce':
-          if (p.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
-          else if (p.x - p.radius < 0) p.vx = -p.vx;
-          if (p.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
-          else if (p.y - p.radius < 0) p.vy = -p.vy;
+        if (p.x + p.radius > pJS.canvas.w) p.vx = -p.vx;
+        else if (p.x - p.radius < 0) p.vx = -p.vx;
+        if (p.y + p.radius > pJS.canvas.h) p.vy = -p.vy;
+        else if (p.y - p.radius < 0) p.vy = -p.vy;
         break;
       }
 
@@ -675,8 +675,8 @@ var pJS = function(tag_id, params){
   pJS.fn.interact.linkParticles = function(p1, p2){
 
     var dx = p1.x - p2.x,
-        dy = p1.y - p2.y,
-        dist = Math.sqrt(dx*dx + dy*dy);
+    dy = p1.y - p2.y,
+    dist = Math.sqrt(dx*dx + dy*dy);
 
     /* draw a line between p1 and p2 if the distance between them is under the config distance */
     if(dist <= pJS.particles.line_linked.distance){
@@ -709,13 +709,13 @@ var pJS = function(tag_id, params){
 
     /* condensed particles */
     var dx = p1.x - p2.x,
-        dy = p1.y - p2.y,
-        dist = Math.sqrt(dx*dx + dy*dy);
+    dy = p1.y - p2.y,
+    dist = Math.sqrt(dx*dx + dy*dy);
 
     if(dist <= pJS.particles.line_linked.distance){
 
       var ax = dx/(pJS.particles.move.attract.rotateX*1000),
-          ay = dy/(pJS.particles.move.attract.rotateY*1000);
+      ay = dy/(pJS.particles.move.attract.rotateY*1000);
 
       p1.vx -= ax;
       p1.vy -= ay;
@@ -732,9 +732,9 @@ var pJS = function(tag_id, params){
   pJS.fn.interact.bounceParticles = function(p1, p2){
 
     var dx = p1.x - p2.x,
-        dy = p1.y - p2.y,
-        dist = Math.sqrt(dx*dx + dy*dy),
-        dist_p = p1.radius+p2.radius;
+    dy = p1.y - p2.y,
+    dist = Math.sqrt(dx*dx + dy*dy),
+    dist_p = p1.radius+p2.radius;
 
     if(dist <= dist_p){
       p1.vx = -p1.vx;
@@ -762,8 +762,8 @@ var pJS = function(tag_id, params){
             'x': pos ? pos.pos_x : Math.random() * pJS.canvas.w,
             'y': pos ? pos.pos_y : Math.random() * pJS.canvas.h
           }
+          )
         )
-      )
       if(i == nb-1){
         if(!pJS.particles.move.enable){
           pJS.fn.particlesDraw();
@@ -791,9 +791,9 @@ var pJS = function(tag_id, params){
     if(pJS.interactivity.events.onhover.enable && isInArray('bubble', pJS.interactivity.events.onhover.mode)){
 
       var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
-          dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
-          dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse),
-          ratio = 1 - dist_mouse / pJS.interactivity.modes.bubble.distance;
+      dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+      dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse),
+      ratio = 1 - dist_mouse / pJS.interactivity.modes.bubble.distance;
 
       function init(){
         p.opacity_bubble = p.opacity;
@@ -815,7 +815,7 @@ var pJS = function(tag_id, params){
               }
             }else{
               var dif = p.radius - pJS.interactivity.modes.bubble.size,
-                  size = p.radius - (dif*ratio);
+              size = p.radius - (dif*ratio);
               if(size > 0){
                 p.radius_bubble = size;
               }else{
@@ -853,7 +853,7 @@ var pJS = function(tag_id, params){
       if(pJS.interactivity.status == 'mouseleave'){
         init();
       }
-    
+      
     }
 
     /* on click event */
@@ -862,9 +862,9 @@ var pJS = function(tag_id, params){
 
       if(pJS.tmp.bubble_clicking){
         var dx_mouse = p.x - pJS.interactivity.mouse.click_pos_x,
-            dy_mouse = p.y - pJS.interactivity.mouse.click_pos_y,
-            dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse),
-            time_spent = (new Date().getTime() - pJS.interactivity.mouse.click_time)/1000;
+        dy_mouse = p.y - pJS.interactivity.mouse.click_pos_y,
+        dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse),
+        time_spent = (new Date().getTime() - pJS.interactivity.mouse.click_time)/1000;
 
         if(time_spent > pJS.interactivity.modes.bubble.duration){
           pJS.tmp.bubble_duration_end = true;
@@ -897,8 +897,8 @@ var pJS = function(tag_id, params){
           }else{
             if(p_obj_bubble != undefined){
               var value_tmp = p_obj - (time_spent * (p_obj - bubble_param) / pJS.interactivity.modes.bubble.duration),
-                  dif = bubble_param - value_tmp;
-                  value = bubble_param + dif;
+              dif = bubble_param - value_tmp;
+              value = bubble_param + dif;
               if(id == 'size') p.radius_bubble = value;
               if(id == 'opacity') p.opacity_bubble = value;
             }
@@ -925,13 +925,13 @@ var pJS = function(tag_id, params){
     if(pJS.interactivity.events.onhover.enable && isInArray('repulse', pJS.interactivity.events.onhover.mode) && pJS.interactivity.status == 'mousemove') {
 
       var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
-          dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
-          dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
+      dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+      dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
 
       var normVec = {x: dx_mouse/dist_mouse, y: dy_mouse/dist_mouse},
-          repulseRadius = pJS.interactivity.modes.repulse.distance,
-          velocity = 100,
-          repulseFactor = clamp((1/repulseRadius)*(-1*Math.pow(dist_mouse/repulseRadius,2)+1)*repulseRadius*velocity, 0, 50);
+      repulseRadius = pJS.interactivity.modes.repulse.distance,
+      velocity = 100,
+      repulseFactor = clamp((1/repulseRadius)*(-1*Math.pow(dist_mouse/repulseRadius,2)+1)*repulseRadius*velocity, 0, 50);
       
       var pos = {
         x: p.x + normVec.x * repulseFactor,
@@ -945,7 +945,7 @@ var pJS = function(tag_id, params){
         p.x = pos.x;
         p.y = pos.y;
       }
-    
+      
     }
 
 
@@ -963,8 +963,8 @@ var pJS = function(tag_id, params){
         var repulseRadius = Math.pow(pJS.interactivity.modes.repulse.distance/6, 3);
 
         var dx = pJS.interactivity.mouse.click_pos_x - p.x,
-            dy = pJS.interactivity.mouse.click_pos_y - p.y,
-            d = dx*dx + dy*dy;
+        dy = pJS.interactivity.mouse.click_pos_y - p.y,
+        d = dx*dx + dy*dy;
 
         var force = -repulseRadius / d * 1;
 
@@ -1008,7 +1008,7 @@ var pJS = function(tag_id, params){
 
           p.vx = p.vx_i;
           p.vy = p.vy_i;
-        
+          
         }
 
       }
@@ -1023,8 +1023,8 @@ var pJS = function(tag_id, params){
     if(pJS.interactivity.events.onhover.enable && pJS.interactivity.status == 'mousemove'){
 
       var dx_mouse = p.x - pJS.interactivity.mouse.pos_x,
-          dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
-          dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
+      dy_mouse = p.y - pJS.interactivity.mouse.pos_y,
+      dist_mouse = Math.sqrt(dx_mouse*dx_mouse + dy_mouse*dy_mouse);
 
       /* draw a line between the cursor and the particle if the distance between them is under the config distance */
       if(dist_mouse <= pJS.interactivity.modes.grab.distance){
@@ -1076,11 +1076,11 @@ var pJS = function(tag_id, params){
 
         if(pJS.interactivity.el == window){
           var pos_x = e.clientX,
-              pos_y = e.clientY;
+          pos_y = e.clientY;
         }
         else{
           var pos_x = e.offsetX || e.clientX,
-              pos_y = e.offsetY || e.clientY;
+          pos_y = e.offsetY || e.clientY;
         }
 
         pJS.interactivity.mouse.pos_x = pos_x;
@@ -1120,33 +1120,33 @@ var pJS = function(tag_id, params){
           switch(pJS.interactivity.events.onclick.mode){
 
             case 'push':
-              if(pJS.particles.move.enable){
+            if(pJS.particles.move.enable){
+              pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb, pJS.interactivity.mouse);
+            }else{
+              if(pJS.interactivity.modes.push.particles_nb == 1){
                 pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb, pJS.interactivity.mouse);
-              }else{
-                if(pJS.interactivity.modes.push.particles_nb == 1){
-                  pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb, pJS.interactivity.mouse);
-                }
-                else if(pJS.interactivity.modes.push.particles_nb > 1){
-                  pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb);
-                }
               }
+              else if(pJS.interactivity.modes.push.particles_nb > 1){
+                pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb);
+              }
+            }
             break;
 
             case 'remove':
-              pJS.fn.modes.removeParticles(pJS.interactivity.modes.remove.particles_nb);
+            pJS.fn.modes.removeParticles(pJS.interactivity.modes.remove.particles_nb);
             break;
 
             case 'bubble':
-              pJS.tmp.bubble_clicking = true;
+            pJS.tmp.bubble_clicking = true;
             break;
 
             case 'repulse':
-              pJS.tmp.repulse_clicking = true;
-              pJS.tmp.repulse_count = 0;
-              pJS.tmp.repulse_finish = false;
-              setTimeout(function(){
-                pJS.tmp.repulse_clicking = false;
-              }, pJS.interactivity.modes.repulse.duration*1000)
+            pJS.tmp.repulse_clicking = true;
+            pJS.tmp.repulse_count = 0;
+            pJS.tmp.repulse_finish = false;
+            setTimeout(function(){
+              pJS.tmp.repulse_clicking = false;
+            }, pJS.interactivity.modes.repulse.duration*1000)
             break;
 
           }
@@ -1154,7 +1154,7 @@ var pJS = function(tag_id, params){
         }
 
       });
-        
+      
     }
 
 
@@ -1188,8 +1188,8 @@ var pJS = function(tag_id, params){
       var p2 = pJS.particles.array[i];
 
       var dx = p1.x - p2.x,
-          dy = p1.y - p2.y,
-          dist = Math.sqrt(dx*dx + dy*dy);
+      dy = p1.y - p2.y,
+      dist = Math.sqrt(dx*dx + dy*dy);
 
       if(dist <= p1.radius + p2.radius){
         p1.x = position ? position.x : Math.random() * pJS.canvas.w;
@@ -1204,20 +1204,20 @@ var pJS = function(tag_id, params){
 
     /* set color to svg element */
     var svgXml = pJS.tmp.source_svg,
-        rgbHex = /#([0-9A-F]{3,6})/gi,
-        coloredSvgXml = svgXml.replace(rgbHex, function (m, r, g, b) {
-          if(p.color.rgb){
-            var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+p.opacity+')';
-          }else{
-            var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+p.opacity+')';
-          }
-          return color_value;
-        });
+    rgbHex = /#([0-9A-F]{3,6})/gi,
+    coloredSvgXml = svgXml.replace(rgbHex, function (m, r, g, b) {
+      if(p.color.rgb){
+        var color_value = 'rgba('+p.color.rgb.r+','+p.color.rgb.g+','+p.color.rgb.b+','+p.opacity+')';
+      }else{
+        var color_value = 'hsla('+p.color.hsl.h+','+p.color.hsl.s+'%,'+p.color.hsl.l+'%,'+p.opacity+')';
+      }
+      return color_value;
+    });
 
     /* prepare to create img with colored svg */
     var svg = new Blob([coloredSvgXml], {type: 'image/svg+xml;charset=utf-8'}),
-        DOMURL = window.URL || window.webkitURL || window,
-        url = DOMURL.createObjectURL(svg);
+    DOMURL = window.URL || window.webkitURL || window,
+    url = DOMURL.createObjectURL(svg);
 
     /* create particle img obj */
     var img = new Image();
@@ -1417,32 +1417,32 @@ Object.deepExtend = function(destination, source) {
     if (source[property] && source[property].constructor &&
      source[property].constructor === Object) {
       destination[property] = destination[property] || {};
-      arguments.callee(destination[property], source[property]);
-    } else {
-      destination[property] = source[property];
-    }
+    arguments.callee(destination[property], source[property]);
+  } else {
+    destination[property] = source[property];
   }
-  return destination;
+}
+return destination;
 };
 
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame    ||
-    window.oRequestAnimationFrame      ||
-    window.msRequestAnimationFrame     ||
-    function(callback){
-      window.setTimeout(callback, 1000 / 60);
-    };
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame    ||
+  window.oRequestAnimationFrame      ||
+  window.msRequestAnimationFrame     ||
+  function(callback){
+    window.setTimeout(callback, 1000 / 60);
+  };
 })();
 
 window.cancelRequestAnimFrame = ( function() {
   return window.cancelAnimationFrame         ||
-    window.webkitCancelRequestAnimationFrame ||
-    window.mozCancelRequestAnimationFrame    ||
-    window.oCancelRequestAnimationFrame      ||
-    window.msCancelRequestAnimationFrame     ||
-    clearTimeout
+  window.webkitCancelRequestAnimationFrame ||
+  window.mozCancelRequestAnimationFrame    ||
+  window.oCancelRequestAnimationFrame      ||
+  window.msCancelRequestAnimationFrame     ||
+  clearTimeout
 } )();
 
 function hexToRgb(hex){
@@ -1450,13 +1450,13 @@ function hexToRgb(hex){
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-     return r + r + g + g + b + b;
-  });
+   return r + r + g + g + b + b;
+ });
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ? {
-      r: parseInt(result[1], 16),
-      g: parseInt(result[2], 16),
-      b: parseInt(result[3], 16)
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
   } : null;
 };
 
@@ -1490,8 +1490,8 @@ window.particlesJS = function(tag_id, params){
 
   /* pJS elements */
   var pJS_tag = document.getElementById(tag_id),
-      pJS_canvas_class = 'particles-js-canvas-el',
-      exist_canvas = pJS_tag.getElementsByClassName(pJS_canvas_class);
+  pJS_canvas_class = 'particles-js-canvas-el',
+  exist_canvas = pJS_tag.getElementsByClassName(pJS_canvas_class);
 
   /* remove canvas if exists into the pJS target tag */
   if(exist_canvas.length){
