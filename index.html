@@ -1,32 +1,33 @@
 <!-- 
 	*	NagMap Reborn Live Preview
 	*	Developed by: João Carlos Rodrigues Ribeiro
-	*	18/08/2018 - 13:31:20
+	*   24/09/2018 - 01:08:20
 	*	See the project: https://github.com/jocafamaka/nagmapReborn
 -->
 
 <!DOCTYPE html> 
-<html lang="pt-BR" class="no-js"> 
+<html class="no-js"> 
 <head> 
 	<meta charset="utf-8"> 
-	<title>NagMap Reborn Live Preview</title>  
+	<title>NagMap Reborn - Live Preview</title>  
 	<meta name="viewport" content="width=device-width,initial-scale=1">  
 	<link rel="stylesheet" href="resources/style.css">
 	<link rel="icon" href="resources/NagFavIcon.ico">
+	<link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
 </head> 
-<body class="flat"> 
-	<div id="particles-js"></div> 
-	<div class="content"> 
+<body class="flat">
+	<iframe id="frame" width="100%" height="100%" src="resources/mapBack.html"></iframe> 
+	<div class="content">	
+		<div id="loader"></div>	
 		<div class="content-box"> 
 			<div class="big-content"> 
-				<img src="resources/NagMapReborn-LOGO-FULL_WHITE.png" class="logo" alt="Logo NagMap Reborn"> 
+				<img src="resources/img/Live.png" class="logo" alt="Logo NagMap Reborn"> 
+				<br>
+				<a href="#" onclick="start();" class="btn green">START</a>
 			</div> 
-			<p><strong>COMING SOON | EM BREVE</strong></p> 
 		</div> 
 	</div>
-	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script> 
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
-	<script src="resources/particles.js"></script>
+	<script src="resources/js/jquery-slim.min.js"></script>  
 	<script type="text/javascript">
 		var _paq = _paq || [];
 		_paq.push(['trackPageView']);
@@ -39,7 +40,122 @@
 			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 		})();
 	</script>
+	<script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
 	<script type="text/javascript" id="cookieinfo" src="resources/cookies.js"></script>
+	<script src="resources/sa/sweetalert2.all.min.js"></script>
+	<script type="text/javascript">
+		var icons, lines, type;
+		async function start(){
+
+			swal({
+				title: 'NagMap Reborn Live Preview!',
+				text: 'This page allows you to preview some of the features and options of NagMap Reborn!',
+				footer: '<a href="https://github.com/jocafamaka/nagmapReborn">Visit the project on GitHub</a>',
+				confirmButtonText: 'Next'
+			}).then(function(){
+				swal({
+					type: 'question',
+					title: 'How it works?',
+					text: 'From now on you will make some choices that will define the appearance of NagMap Reborn, so choose carefully.',
+					footer: '<a href="https://github.com/jocafamaka/nagmapReborn">Visit the project on GitHub</a>',
+					confirmButtonText: 'Begin'
+				}).then(function(){text1();})
+			});
+		}
+
+		async function text1(){
+			const inputOptions = new Promise((resolve) => {
+				setTimeout(() => {
+					resolve({
+						'0': '<img title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
+						'1': '<img title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
+						'2': '<img title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
+					})
+				}, 500)
+			})
+
+			const {value: color} = await swal({
+				title: 'Select the style of the icons!',
+				input: 'radio',
+				inputOptions: inputOptions,
+				confirmButtonText: 'Next',
+				inputValidator: (value) => {
+					return !value && 'You need to choose something!'
+				}
+			})
+			if (color) {
+				text2();icons = color;
+			}
+		}
+
+		async function text2(){
+			const inputOptions = new Promise((resolve) => {
+				setTimeout(() => {
+					resolve({
+						'1': '<img title="On" src="resources/img/lines/on.png">',
+						'3': '<img title="Off" src="resources/img/lines/off.png">',
+					})
+				}, 500)
+			})
+
+			const {value: color} = await swal({
+				title: 'Show line between parents?',
+				input: 'radio',
+				inputOptions: inputOptions,
+				confirmButtonText: 'Next',
+				inputValidator: (value) => {
+					return !value && 'You need to choose something!'
+				}
+			})
+
+			if (color) {
+				text3();lines = color;
+			}
+		}
+
+		async function text3(){
+			const inputOptions = new Promise((resolve) => {
+				setTimeout(() => {
+					resolve({
+						'0': '<img title="Roadmap type" src="resources/img/styles/roadmap.png">',
+						'1': '<img title="Satellite type" src="resources/img/styles/satellite.png"><br>',
+						'2': '<img title="Terrain type" src="resources/img/styles/terrain.png">',
+						'3': '<img title="Dark custom style" src="resources/img/styles/dark.png">',
+					})
+				}, 500)
+			})
+
+			const {value: color} = await swal({
+				title: 'Select map type/style!',
+				input: 'radio',
+				inputOptions: inputOptions,
+				confirmButtonText: 'Next',
+				inputValidator: (value) => {
+					return !value && 'You need to choose something!'
+				}
+			})
+
+			if (color) {
+				swal({
+					type: 'success',
+					title: 'All set up, let\'s go!',
+					text: 'You will now be redirected to the page with the generated map.',
+					confirmButtonText: 'GO'
+				}).then(function(){
+					type = color; go();
+				})
+			}
+		}
+
+		async function go(){
+			setTimeout(function(){
+				window.location.replace("live.html?icons="+icons+"&lines="+lines+"&type="+type);
+			}, 1000);
+			$('#loader').show().width(((window.innerWidth > window.innerHeight)? window.innerWidth : window.innerHeight) + 250).height(((window.innerWidth > window.innerHeight)? window.innerWidth : window.innerHeight) + 250);
+		}
+
+		$('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');
+	</script>
 
 </body> 
 </html>
