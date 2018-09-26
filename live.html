@@ -12,11 +12,48 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <link rel=StyleSheet href="resources/liveStyle.css" type="text/css" media=screen>
   <link href="resources/toastr/toastr.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
-  <title>NagMap Reborn - Live Preview</title>
-  <script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
+  <style type="text/css">
+  .lds-ripple {
+    position: sticky;
+    width: 64px;
+    height: 64px;
+    z-index: 1110;
+    background-color: #2371b3;
+    top: calc(50% - 32px) !important;
+    left: calc(50% - 32px) !important;
+  }
+  .lds-ripple div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  @keyframes lds-ripple {
+    0% {
+      top: 28px;
+      left: 28px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: -1px;
+      left: -1px;
+      width: 58px;
+      height: 58px;
+      opacity: 0;
+    }
+  }
+</style>
+<link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
+<title>NagMap Reborn - Live Preview</title>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
     // Defines the array used for the comparisons.
     var hostStatus = [{"host_name":"xMain_Hostx","time":"1522587837","nagios_host_name":"Main_Host","alias":"Main_Host","status":0},{"host_name":"xHost_1x","time":"1527537306","nagios_host_name":"Host_1","alias":"Host_1","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_2x","time":"1527597829","nagios_host_name":"Host_2","alias":"Host_2","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_3x","time":"1527410227","nagios_host_name":"Host_3","alias":"Host_3","parents":["xMain_Hostx"],"status":2},{"host_name":"xHost_4x","time":"1527591240","nagios_host_name":"Host_4","alias":"Host_4","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_5x","time":"1527246451","nagios_host_name":"Host_5","alias":"Host_5","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_6x","time":"1527259825","nagios_host_name":"Host_6","alias":"Host_6","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_7x","time":"1527593748","nagios_host_name":"Host_7","alias":"Host_7","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_8x","time":"1527536656","nagios_host_name":"Host_8","alias":"Host_8","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_9x","time":"1527605778","nagios_host_name":"Host_9","alias":"Host_9","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_10x","time":"1527317615","nagios_host_name":"Host_10","alias":"Host_10","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_11x","time":"1527592466","nagios_host_name":"Host_11","alias":"Host_11","parents":["xMain_Hostx","xMain_Hostx"],"status":1}];
@@ -381,7 +418,7 @@ LINES[11].line.setMap(map);
 </script>
 </head>
 <body style="margin:0px; padding:0px; overflow:hidden;" onload="initialize()">
-  <div id="loader2"></div>
+  <div id="loader2"><div class="lds-ripple"><div></div><div></div></div></div>
   <div id="side-menu" class="side-nav">
     <nav class="main-menu">
       <ul>

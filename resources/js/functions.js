@@ -187,7 +187,7 @@ function onInit(){
     swal({
       type: 'success',
       title: 'Welcome to NagMap Reborn!',
-      text: 'Due to the use of pure HTML it was not possible to represent some of the features and options of NagMap Reborn, however through this page you can get a working idea of the NagMap Reborn.',
+      text: 'Due to the limitation of architecture (user-side only) it was not possible to represent some of the features and options of NagMap Reborn, however through this page you can get a working idea of the NagMap Reborn.',
       footer: 'The data presented here are only demonstrative and generated in a random way, but the occurrences represent the real behavior of the application before the changes of the hosts.',
       confirmButtonText: 'OK'
     }); 

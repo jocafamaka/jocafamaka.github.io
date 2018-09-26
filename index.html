@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
 </head> 
 <body class="flat">
-	<iframe id="frame" width="100%" height="100%" src="resources/mapBack.html"></iframe> 
+	<div id="map_canvas"></div>
 	<div class="content">	
 		<div id="loader"></div>	
 		<div class="content-box"> 
@@ -28,7 +28,98 @@
 		</div> 
 	</div>
 	<script src="resources/js/jquery-slim.min.js"></script>  
+	<script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
+	<script type="text/javascript" id="cookieinfo" src="resources/cookies.js"></script>
+	<script src="resources/sa/sweetalert2.all.min.js"></script>
 	<script type="text/javascript">
+		var icons, lines, type;
+
+		window.map = new google.maps.Map(document.getElementById("map_canvas"),{
+			zoom: 14,
+			center: new google.maps.LatLng(-3.723186, -38.522053),
+			zoomControl: false,
+			mapTypeControl: false,
+			scaleControl: false,
+			streetViewControl: false,
+			rotateControl: false,
+			keyboardShortcuts: false,
+			maxZoom: 14,
+			minZoom: 14,
+			gestureHandling: 'none',
+			fullscreenControl: false,
+			styles: [
+			{
+				featureType: "administrative",
+				elementType: "labels",
+				stylers: [
+				{ visibility: "off" }
+				]
+			},{
+				featureType: "poi",
+				elementType: "labels",
+				stylers: [
+				{ visibility: "off" }
+				]
+			},{
+				featureType: "water",
+				elementType: "labels",
+				stylers: [
+				{ visibility: "off" }
+				]
+			},{
+				featureType: "road",
+				elementType: "labels",
+				stylers: [
+				{ visibility: "off" }
+				]
+			}
+			]
+		});
+
+		var panPath = [];   
+		var panQueue = [];  
+		var STEPS = 600;   
+
+		function panTo(newLat, newLng) {
+			if (panPath.length > 0) {
+				panQueue.push([newLat, newLng]);
+			} else {
+
+				panPath.push("LAZY SYNCRONIZED LOCK");
+				var curLat = map.getCenter().lat();
+				var curLng = map.getCenter().lng();
+				var dLat = (newLat - curLat)/STEPS;
+				var dLng = (newLng - curLng)/STEPS;
+
+				for (var i=0; i < STEPS; i++) {
+					panPath.push([curLat + dLat * i, curLng + dLng * i]);
+				}
+				panPath.push([newLat, newLng]);
+				panPath.shift();
+				setTimeout(doPan, 20);
+			}
+		}
+
+		function doPan() {
+			var next = panPath.shift();
+			if (next != null) {
+				map.panTo( new google.maps.LatLng(next[0], next[1]));
+				setTimeout(doPan, 20 );
+			} else {
+				var queued = panQueue.shift();
+				if (queued != null) {
+					panTo(queued[0], queued[1]);
+				}
+			}
+		}
+
+		panTo(-3.727894, -38.599586);
+		panTo(-3.865957, -38.453139);
+		panTo(-3.861874, -38.506926);
+		panTo(-3.836712, -38.592030);
+		panTo(-3.787341, -38.540527);
+		panTo(-3.723186, -38.522053);
+
 		var _paq = _paq || [];
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
@@ -39,12 +130,7 @@
 			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
 			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 		})();
-	</script>
-	<script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
-	<script type="text/javascript" id="cookieinfo" src="resources/cookies.js"></script>
-	<script src="resources/sa/sweetalert2.all.min.js"></script>
-	<script type="text/javascript">
-		var icons, lines, type;
+
 		async function start(){
 
 			swal({
