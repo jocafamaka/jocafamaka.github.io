@@ -85,7 +85,7 @@
 				panQueue.push([newLat, newLng]);
 			} else {
 
-				panPath.push("LAZY SYNCRONIZED LOCK");
+				panPath.push("****");
 				var curLat = map.getCenter().lat();
 				var curLng = map.getCenter().lng();
 				var dLat = (newLat - curLat)/STEPS;
@@ -131,7 +131,7 @@
 			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
 		})();
 
-		async function start(){
+		function start(){
 
 			swal({
 				title: 'NagMap Reborn Live Preview!',
@@ -145,95 +145,71 @@
 					text: 'From now on you will make some choices that will define the appearance of NagMap Reborn, so choose carefully.',
 					footer: '<a href="https://github.com/jocafamaka/nagmapReborn">Visit the project on GitHub</a>',
 					confirmButtonText: 'Begin'
-				}).then(function(){text1();})
+				}).then(function(){questions();})
 			});
 		}
 
-		async function text1(){
-			const inputOptions = new Promise((resolve) => {
-				setTimeout(() => {
-					resolve({
-						'0': '<img title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
-						'1': '<img title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
-						'2': '<img title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
-					})
-				}, 500)
-			})
+		function questions(){
 
-			const {value: color} = await swal({
+			swal.mixin({
+				input: 'radio',
+				confirmButtonText: 'Next &rarr;',
+				showCancelButton: false,
+				progressSteps: ['1', '2', '3']
+			}).queue([
+			{
 				title: 'Select the style of the icons!',
-				input: 'radio',
-				inputOptions: inputOptions,
-				confirmButtonText: 'Next',
+				inputOptions:{
+					'0': '<img title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
+					'1': '<img title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
+					'2': '<img title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
+				},
 				inputValidator: (value) => {
 					return !value && 'You need to choose something!'
 				}
-			})
-			if (color) {
-				text2();icons = color;
-			}
-		}
-
-		async function text2(){
-			const inputOptions = new Promise((resolve) => {
-				setTimeout(() => {
-					resolve({
-						'1': '<img title="On" src="resources/img/lines/on.png">',
-						'3': '<img title="Off" src="resources/img/lines/off.png">',
-					})
-				}, 500)
-			})
-
-			const {value: color} = await swal({
+			},
+			{
 				title: 'Show line between parents?',
-				input: 'radio',
-				inputOptions: inputOptions,
-				confirmButtonText: 'Next',
+				inputOptions:{
+					'1': '<img title="On" src="resources/img/lines/on.png">',
+					'3': '<img title="Off" src="resources/img/lines/off.png">',
+				},
 				inputValidator: (value) => {
 					return !value && 'You need to choose something!'
 				}
-			})
-
-			if (color) {
-				text3();lines = color;
-			}
-		}
-
-		async function text3(){
-			const inputOptions = new Promise((resolve) => {
-				setTimeout(() => {
-					resolve({
-						'0': '<img title="Roadmap type" src="resources/img/styles/roadmap.png">',
-						'1': '<img title="Satellite type" src="resources/img/styles/satellite.png"><br>',
-						'2': '<img title="Terrain type" src="resources/img/styles/terrain.png">',
-						'3': '<img title="Dark custom style" src="resources/img/styles/dark.png">',
-					})
-				}, 500)
-			})
-
-			const {value: color} = await swal({
+			},
+			{
 				title: 'Select map type/style!',
-				input: 'radio',
-				inputOptions: inputOptions,
-				confirmButtonText: 'Next',
+				inputOptions:{
+					'0': '<img title="Roadmap type" src="resources/img/styles/roadmap.png">',
+					'1': '<img title="Satellite type" src="resources/img/styles/satellite.png"><br>',
+					'2': '<img title="Terrain type" src="resources/img/styles/terrain.png">',
+					'3': '<img title="Dark custom style" src="resources/img/styles/dark.png">',
+				},
 				inputValidator: (value) => {
 					return !value && 'You need to choose something!'
+				},
+				confirmButtonText: 'Finish'
+			}
+			]).then((result) => {
+				if (result.value) {
+					var r = result.value;
+					icons = r[0];
+					lines = r[1];
+					type = r[2];
+					swal({
+						type: 'success',
+						title: 'All set up, let\'s go!',
+						text: 'You will now be redirected to the page with the generated map.',
+						confirmButtonText: 'GO'
+					}).then(function(){
+						go();
+					})
 				}
 			})
-
-			if (color) {
-				swal({
-					type: 'success',
-					title: 'All set up, let\'s go!',
-					text: 'You will now be redirected to the page with the generated map.',
-					confirmButtonText: 'GO'
-				}).then(function(){
-					type = color; go();
-				})
-			}
 		}
 
-		async function go(){
+		function go(){
 			setTimeout(function(){
 				window.location.replace("live.html?icons="+icons+"&lines="+lines+"&type="+type);
 			}, 1000);
