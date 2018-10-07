@@ -10,10 +10,26 @@
 <head> 
 	<meta charset="utf-8"> 
 	<title>NagMap Reborn - Live Preview</title>  
-	<meta name="viewport" content="width=device-width,initial-scale=1">  
-	<link rel="stylesheet" href="resources/style.css">
-	<link rel="icon" href="resources/NagFavIcon.ico">
-	<link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<style type="text/css">
+	#toast {visibility: hidden;max-width: 50px;height: 50px;/*margin-left: -125px;*/margin: auto;background-color: #2b8adc;color: #fff;text-align: center;border-radius: 2px;position: fixed;z-index: 1;left: 0;right:0;bottom: 30px;font-size: 17px;white-space: nowrap;}
+	#toast #img{width: 50px;height: 50px;float: left;padding-top: 16px;padding-bottom: 16px;box-sizing: border-box;background-color: #2371b3;color: #fff;line-height:1;}
+	#toast #desc{color: #fff;padding: 16px;overflow: hidden;white-space: nowrap;line-height: 1;}
+	#toast.show {visibility: visible;-webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;}
+	@-webkit-keyframes fadein {from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;}}
+	@keyframes fadein {from {bottom: 0; opacity: 0;}to {bottom: 30px; opacity: 1;}}
+	@-webkit-keyframes expand {from {min-width: 50px} to {min-width: 350px}}
+	@keyframes expand {from {min-width: 50px}to {min-width: 350px}}
+	@-webkit-keyframes stay {from {min-width: 350px} to {min-width: 350px}}
+	@keyframes stay {from {min-width: 350px}to {min-width: 350px}}
+	@-webkit-keyframes shrink {from {min-width: 350px;} to {min-width: 50px;}}
+	@keyframes shrink {from {min-width: 350px;} to {min-width: 50px;}}
+	@-webkit-keyframes fadeout {from {bottom: 30px; opacity: 1;} to {bottom: 60px; opacity: 0;}}
+	@keyframes fadeout {from {bottom: 30px; opacity: 1;}to {bottom: 60px; opacity: 0;}}
+</style>
+<link rel="stylesheet" href="resources/style.css">
+<link rel="icon" href="resources/NagFavIcon.ico">
+<link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
 </head> 
 <body class="flat">
 	<div id="map_canvas"></div>
@@ -27,12 +43,28 @@
 			</div> 
 		</div> 
 	</div>
+	<div id="toast"><div id="img">INFO</div><div id="desc">Slow connection detectd!</div></div>
 	<script src="resources/js/jquery-slim.min.js"></script>  
 	<script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
 	<script type="text/javascript" id="cookieinfo" src="resources/cookies.js"></script>
 	<script src="resources/sa/sweetalert2.all.min.js"></script>
 	<script type="text/javascript">
 		var icons, lines, type;
+		var isSlow = false;
+
+		function launch_toast() {
+			var x = document.getElementById("toast")
+			x.className = "show";
+			setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+		};
+
+		STEPS = 600;
+
+		var slow = setTimeout(function() {
+			STEPS = 800;
+			isSlow = true;
+			launch_toast();
+		}, 5000);
 
 		window.map = new google.maps.Map(document.getElementById("map_canvas"),{
 			zoom: 14,
@@ -76,9 +108,22 @@
 			]
 		});
 
-		var panPath = [];   
-		var panQueue = [];  
-		var STEPS = 600;   
+		var tilesLoadedCount = 0;
+		google.maps.event.addListener(map, 'tilesloaded', function() {
+			tilesLoadedCount++;
+			if (tilesLoadedCount == 1) {
+				clearTimeout(slow);
+				panTo(-3.727894, -38.599586);
+				panTo(-3.865957, -38.453139);
+				panTo(-3.861874, -38.506926);
+				panTo(-3.836712, -38.592030);
+				panTo(-3.787341, -38.540527);
+				panTo(-3.723186, -38.522053);
+			}
+		});
+
+		panPath = [];   
+		panQueue = [];  
 
 		function panTo(newLat, newLng) {
 			if (panPath.length > 0) {
@@ -98,7 +143,7 @@
 				panPath.shift();
 				setTimeout(doPan, 20);
 			}
-		}
+		};
 
 		function doPan() {
 			var next = panPath.shift();
@@ -111,14 +156,7 @@
 					panTo(queued[0], queued[1]);
 				}
 			}
-		}
-
-		panTo(-3.727894, -38.599586);
-		panTo(-3.865957, -38.453139);
-		panTo(-3.861874, -38.506926);
-		panTo(-3.836712, -38.592030);
-		panTo(-3.787341, -38.540527);
-		panTo(-3.723186, -38.522053);
+		};
 
 		var _paq = _paq || [];
 		_paq.push(['trackPageView']);
@@ -143,13 +181,19 @@
 					type: 'question',
 					title: 'How it works?',
 					text: 'From now on you will make some choices that will define the appearance of NagMap Reborn, so choose carefully.',
-					footer: '<a href="https://github.com/jocafamaka/nagmapReborn">Visit the project on GitHub</a>',
+					footer: '<a href="https://github.com/jocafamaka/nagmapReborn">Visit the project on GitHub</a><img style="opacity:0;with:0px;height:0px" class="load" src="">',
 					confirmButtonText: 'Begin'
 				}).then(function(){questions();})
 			});
 		}
 
 		function questions(){
+
+			if(isSlow)
+			{
+				panPath = [];   
+				panQueue = [];
+			}
 
 			swal.mixin({
 				input: 'radio',
@@ -160,9 +204,9 @@
 			{
 				title: 'Select the style of the icons!',
 				inputOptions:{
-					'0': '<img title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
-					'1': '<img title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
-					'2': '<img title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
+					'0': '<img class="al62x43 load" title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
+					'1': '<img class="al62x43 load" title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
+					'2': '<img class="al62x43 load" title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
 				},
 				inputValidator: (value) => {
 					return !value && 'You need to choose something!'
@@ -171,8 +215,8 @@
 			{
 				title: 'Show line between parents?',
 				inputOptions:{
-					'1': '<img title="On" src="resources/img/lines/on.png">',
-					'3': '<img title="Off" src="resources/img/lines/off.png">',
+					'1': '<img class="al142x100 load" title="On" src="resources/img/lines/on.png">',
+					'3': '<img class="al142x100 load" title="Off" src="resources/img/lines/off.png">',
 				},
 				inputValidator: (value) => {
 					return !value && 'You need to choose something!'
@@ -181,10 +225,10 @@
 			{
 				title: 'Select map type/style!',
 				inputOptions:{
-					'0': '<img title="Roadmap type" src="resources/img/styles/roadmap.png">',
-					'1': '<img title="Satellite type" src="resources/img/styles/satellite.png"><br>',
-					'2': '<img title="Terrain type" src="resources/img/styles/terrain.png">',
-					'3': '<img title="Dark custom style" src="resources/img/styles/dark.png">',
+					'0': '<img class="al122x122 load" title="Roadmap type" src="resources/img/styles/roadmap.png">',
+					'1': '<img class="al122x122 load" title="Satellite type" src="resources/img/styles/satellite.png"><br>',
+					'2': '<img class="al122x122 load" title="Terrain type" src="resources/img/styles/terrain.png">',
+					'3': '<img class="al122x122 load" title="Dark custom style" src="resources/img/styles/dark.png">',
 				},
 				inputValidator: (value) => {
 					return !value && 'You need to choose something!'

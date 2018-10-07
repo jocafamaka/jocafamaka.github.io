@@ -172,6 +172,7 @@
             changeStyle(GetURLParameter('type'));
 
           $('#loader2').css("opacity", "0");
+          
           clearTimeout(slow);
 
           setTimeout(function(){
@@ -180,7 +181,7 @@
               type: 'success',
               title: 'Welcome to NagMap Reborn!',
               text: 'Due to the limitation of architecture (user-side only) it was not possible to represent some of the features and options of NagMap Reborn, however through this page you can get a working idea of the NagMap Reborn.',
-              footer: 'The data presented here are only demonstrative and generated in a random way, but the occurrences represent the real behavior of the application before the changes of the hosts.',
+              footer: 'The data presented here are only demonstrative and generated randomly, but the occurrences represent the actual behavior of the application as the hosts change.',
               confirmButtonText: 'OK'
             }); 
           }, 900);
@@ -251,7 +252,7 @@ MARK.push(new google.maps.Marker({
   zIndex: 2,
   title: "Main_Host"}));
 
-window.xMain_Hostx_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Main_Host</strong><br><table><tr><td>Alias</td><td>:</td><td> Main_Host</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 10.98.1.6</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> </td></tr></table>'})
+window.xMain_Hostx_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Main_Host</strong><br><table><tr><td>Alias</td><td>:</td><td> Main_Host</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.0.1</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> </td></tr></table>'})
 google.maps.event.addListener(MARK[0], 'click', function() {xMain_Hostx_mark_infowindow.open(map, MARK[0]);});
 
 window.xHost_1x_pos = new google.maps.LatLng(-10.615059, -48.245682);

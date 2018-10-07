@@ -120,11 +120,12 @@ function showMenu(){
   swal({
     title: 'MENU',
     input: 'radio',
+    html: '<img style="opacity:0;with:0px;height:0px" class="load" src="">',
     showCancelButton: true,
     showConfirmButton: false,
     inputOptions:{
-      '0': '<img title="Project on GitHub" onclick="window.open(\'https://github.com/jocafamaka/nagmapReborn\'); swal.close();" src="resources/img/ProjectIcon.png">',
-      '1': '<img title="Change" onclick="change();" src="resources/img/RestartIcon.png">'
+      '0': '<img class="al113x114" title="Project on GitHub" onclick="window.open(\'https://github.com/jocafamaka/nagmapReborn\'); swal.close();" src="resources/img/ProjectIcon.png">',
+      '1': '<img class="al113x114" title="Change" onclick="change();" src="resources/img/RestartIcon.png">'
     }
   })
 }
@@ -140,9 +141,9 @@ function change(){
   {
     title: 'Select the style of the icons!',
     inputOptions:{
-      '0': '<img title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
-      '1': '<img title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
-      '2': '<img title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
+      '0': '<img class="al62x43 load" title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
+      '1': '<img class="al62x43 load" title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
+      '2': '<img class="al62x43 load" title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
     },
     inputValidator: (value) => {
       return !value && 'You need to choose something!'
@@ -151,8 +152,8 @@ function change(){
   {
     title: 'Show line between parents?',
     inputOptions:{
-      '1': '<img title="On" src="resources/img/lines/on.png">',
-      '3': '<img title="Off" src="resources/img/lines/off.png">',
+      '1': '<img class="al142x100 load" title="On" src="resources/img/lines/on.png">',
+      '3': '<img class="al142x100 load" title="Off" src="resources/img/lines/off.png">',
     },
     inputValidator: (value) => {
       return !value && 'You need to choose something!'
@@ -161,10 +162,10 @@ function change(){
   {
     title: 'Select map type/style!',
     inputOptions:{
-      '0': '<img title="Roadmap type" src="resources/img/styles/roadmap.png">',
-      '1': '<img title="Satellite type" src="resources/img/styles/satellite.png"><br>',
-      '2': '<img title="Terrain type" src="resources/img/styles/terrain.png">',
-      '3': '<img title="Dark custom style" src="resources/img/styles/dark.png">',
+      '0': '<img class="al122x122 load" title="Roadmap type" src="resources/img/styles/roadmap.png">',
+      '1': '<img class="al122x122 load" title="Satellite type" src="resources/img/styles/satellite.png"><br>',
+      '2': '<img class="al122x122 load" title="Terrain type" src="resources/img/styles/terrain.png">',
+      '3': '<img class="al122x122 load" title="Dark custom style" src="resources/img/styles/dark.png">',
     },
     inputValidator: (value) => {
       return !value && 'You need to choose something!'
@@ -230,7 +231,7 @@ function onInit(){
   setTimeout(function(){
     swal({
       title: 'Get started right now:',
-      html: '<br><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank" style="cursor: pointer;"><img title="Project on GitHub" src="resources/img/logo+GitBlack.svg" alt=""></a><center>',
+      html: '<br><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank" style="cursor: pointer;"><img class="al318x100" title="Project on GitHub" src="resources/img/logo+GitBlack.svg" alt=""></a><center>',
       confirmButtonText: 'Close'
     });
   }, 60000);

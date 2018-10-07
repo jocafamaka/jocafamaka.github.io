@@ -365,3 +365,26 @@ select::-ms-expand {
   -o-transition: .25s all ease;
   transition: .25s all ease;
 }
+.al62x43{
+  min-width: 62px !important;
+  min-height: 43px !important;
+}
+.al113x114{
+  min-width: 113px !important;
+  min-height: 114px !important;
+}
+.al142x100{
+  min-width: 142px !important;
+  min-height: 100px !important;
+}
+.al122x122{
+  min-width: 122px !important;
+  min-height: 122px !important;
+}
+.al318x100{
+  min-width: 318px !important;
+  min-height: 100px !important;
+}
+.load{
+  background: transparent url('img/imgLoader.gif') center no-repeat;
+}
