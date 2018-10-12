@@ -32,33 +32,30 @@ function removeLines(){
 }
 
 function changeIconStyle(style){
-	iconRed.url= 'resources/img/icons/MarkerRedSt-'+ style +'.png';
-
-  iconGreen.url= 'resources/img/icons/MarkerGreenSt-'+ style +'.png';
-
-  iconOrange.url= 'resources/img/icons/MarkerOrangeSt-'+ style +'.png';
-
-  iconYellow.url= 'resources/img/icons/MarkerYellowSt-'+ style +'.png';
-
-  iconGrey.url= 'resources/img/icons/MarkerGreySt-'+ style +'.png';
-
-  for(host = 0 ; host < hostStatus.length ; host++){
-    if(hostStatus[host].status == 0){
-     MARK[host].setIcon(iconGreen);
-   }
-   else if(hostStatus[host].status == 1){
-     MARK[host].setIcon(iconYellow);
-   }
-   else if(hostStatus[host].status == 2){
-     MARK[host].setIcon(iconOrange);
-   }
-   else if(hostStatus[host].status == 3){
-     MARK[host].setIcon(iconRed);
-   }
-   else{
-     MARK[host].setIcon(iconGrey);
-   }
- }
+  if(style >= 0 && style <= 3){
+    iconRed.url= 'resources/img/icons/MarkerRedSt-'+ style +'.png';
+    iconGreen.url= 'resources/img/icons/MarkerGreenSt-'+ style +'.png';
+    iconOrange.url= 'resources/img/icons/MarkerOrangeSt-'+ style +'.png';
+    iconYellow.url= 'resources/img/icons/MarkerYellowSt-'+ style +'.png';
+    iconGrey.url= 'resources/img/icons/MarkerGreySt-'+ style +'.png';
+    for(host = 0 ; host < hostStatus.length ; host++){
+      if(hostStatus[host].status == 0){
+        MARK[host].setIcon(iconGreen);
+      }
+      else if(hostStatus[host].status == 1){
+        MARK[host].setIcon(iconYellow);
+      }
+      else if(hostStatus[host].status == 2){
+        MARK[host].setIcon(iconOrange);
+      }
+      else if(hostStatus[host].status == 3){
+        MARK[host].setIcon(iconRed);
+      }
+      else{
+        MARK[host].setIcon(iconGrey);
+      }
+    }
+  }
 }
 
 function randomStatus(){
@@ -102,6 +99,13 @@ function changeStyle(style){
     map.setMapTypeId(MY_MAPTYPE_DARK);
 };
 
+function changeSize(size){
+  if(size >= 25 && size <= 50){
+    $('#map_canvas').height(100-size + '%');
+    $('#changesbar').height(size + '%');
+  }
+};
+
 function GetURLParameter(sParam)
 {
   var sPageURL = window.location.search.substring(1);
@@ -136,7 +140,7 @@ function change(){
     input: 'radio',
     confirmButtonText: 'Next &rarr;',
     showCancelButton: false,
-    progressSteps: ['1', '2', '3']
+    progressSteps: ['1', '2', '3', '4']
   }).queue([
   {
     title: 'Select the style of the icons!',
@@ -160,6 +164,11 @@ function change(){
     }
   },
   {
+    title: 'ChangesBar size on screen!',
+    html: '<br><div id="tudo"><input id="ex6" type="text" data-slider-min="25" data-slider-tooltip="hide" data-slider-max="50" data-slider-step="1" data-slider-value="25" data-slider-orientation="vertical"/><div id="view"><div id="sizeView"><img class="al122x122 load" src="resources/img/styles/roadmap.png"><div id="changesBarView"><div class="line down"></div><div class="line crit"></div><div class="line war"></div></div></div></div></div>',
+    onBeforeOpen: function(){$("#ex6").slider({reversed : true});$("#ex6").on("change", function(slideEvt){$("#changesBarView").height(sizeBar = slideEvt.value.newValue);});}
+  },
+  {
     title: 'Select map type/style!',
     inputOptions:{
       '0': '<img class="al122x122 load" title="Roadmap type" src="resources/img/styles/roadmap.png">',
@@ -177,7 +186,8 @@ function change(){
       var r = result.value;
       changeIconStyle(r[0]);
       (r[1] == 1) ? addLines() : removeLines();
-      changeStyle(r[2]);
+      changeSize(sizeBar);
+      changeStyle(r[3]);
       swal({
         type: 'success',
         title: 'Finished!',
@@ -215,12 +225,6 @@ function onInit(){
       html: 'Due to the API usage quotas, some navigation and zoom limits have been defined.'
     });
   });
-
-  $('select[name=style]').change(function(){ changeIconStyle($(this).val()); });
-
-  $('select[name=lines]').change(function(){ ($(this).val() == 1)? addLines() : removeLines(); });
-
-  $('select[name=mapS]').change(function(){ changeStyle($(this).val()); });
 
   MY_MAPTYPE_DARK = '';
 

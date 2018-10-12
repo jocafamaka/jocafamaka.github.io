@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="resources/style.css">
 <link rel="icon" href="resources/NagFavIcon.ico">
 <link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
+<link rel="stylesheet" href="resources/bootstrap-slider.min.css">
 </head> 
 <body class="flat">
 	<div id="map_canvas"></div>
@@ -48,8 +49,10 @@
 	<script src="//maps.google.com/maps/api/js?key=AIzaSyC8XKG385ovMZEXE6h2jV5jyBp5QCovz8g" type="text/javascript"></script>
 	<script type="text/javascript" id="cookieinfo" src="resources/cookies.js"></script>
 	<script src="resources/sa/sweetalert2.all.min.js"></script>
+	<script type="text/javascript" src="resources/js/bootstrap-slider.min.js"></script>  
 	<script type="text/javascript">
 		var icons, lines, type;
+		var sizeBar = 25;
 		var isSlow = false;
 
 		function launch_toast() {
@@ -199,7 +202,7 @@
 				input: 'radio',
 				confirmButtonText: 'Next &rarr;',
 				showCancelButton: false,
-				progressSteps: ['1', '2', '3']
+				progressSteps: ['1', '2', '3', '4']
 			}).queue([
 			{
 				title: 'Select the style of the icons!',
@@ -223,6 +226,11 @@
 				}
 			},
 			{
+				title: 'ChangesBar size on screen!',
+				html: '<br><div id="tudo"><input id="ex6" type="text" data-slider-min="25" data-slider-tooltip="hide" data-slider-max="50" data-slider-step="1" data-slider-value="25" data-slider-orientation="vertical"/><div id="view"><div id="sizeView"><div id="changesBarView"><div class="line down"></div><div class="line crit"></div><div class="line war"></div></div></div></div></div>',
+				onBeforeOpen: function(){$("#ex6").slider({reversed : true});$("#ex6").on("change", function(slideEvt){$("#changesBarView").height(sizeBar = slideEvt.value.newValue);});}
+			},
+			{
 				title: 'Select map type/style!',
 				inputOptions:{
 					'0': '<img class="al122x122 load" title="Roadmap type" src="resources/img/styles/roadmap.png">',
@@ -240,7 +248,7 @@
 					var r = result.value;
 					icons = r[0];
 					lines = r[1];
-					type = r[2];
+					type = r[3];
 					swal({
 						type: 'success',
 						title: 'All set up, let\'s go!',
@@ -255,7 +263,7 @@
 
 		function go(){
 			setTimeout(function(){
-				window.location.replace("live.html?icons="+icons+"&lines="+lines+"&type="+type);
+				window.location.replace("live.html?icons="+icons+"&lines="+lines+"&type="+type+"&size="+sizeBar);
 			}, 1000);
 			$('#loader').show().width(((window.innerWidth > window.innerHeight)? window.innerWidth : window.innerHeight) + 250).height(((window.innerWidth > window.innerHeight)? window.innerWidth : window.innerHeight) + 250);
 		}

@@ -33,19 +33,19 @@ body {
 }
 
 .al62x43{
-  min-width: 62px !important;
-  min-height: 43px !important;
+	min-width: 62px !important;
+	min-height: 43px !important;
 }
 .al142x100{
-  min-width: 142px !important;
-  min-height: 100px !important;
+	min-width: 142px !important;
+	min-height: 100px !important;
 }
 .al122x122{
-  min-width: 122px !important;
-  min-height: 122px !important;
+	min-width: 122px !important;
+	min-height: 122px !important;
 }
 .load{
-  background: transparent url('img/imgLoader.gif') center no-repeat;
+	background: transparent url('img/imgLoader.gif') center no-repeat;
 }
 
 body.flat {
@@ -419,6 +419,52 @@ input:checked + span > img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 .swal2-radio{
 	display: table !important;
+}
+
+#tudo{
+	width: 200px;
+	margin: 0 auto;
+}
+#sizeView{
+	position:relative;
+	float: right;
+	width: 122px;
+	height: 122px;
+	background: transparent url('img/styles/roadmap.png') center no-repeat;'
+}
+#changesBarView{
+	width: 100%;
+	position: absolute;
+	height: 25%;
+	bottom: 0px;
+	z-index: 1;
+	background-color: black;
+}
+.line{
+	width: 100%;
+	height: 5px;
+	margin: 0px 0px 1px 0px;
+}
+
+.line.war{
+	background:#c5d200 !important;
+}
+
+.line.crit{
+	background:#ff6a00 !important;
+}
+
+.line.down{
+	background:#770101 !important;
+}
+#view{
+	float: right;
+}
+.slider.slider-vertical{
+	height: 122px !important;
+}
+.slider-track-high {
+	background: #BABABA !important;
 }
 
 @media only screen and (max-width: 400px) {

@@ -30,6 +30,10 @@ html{
   width: 90px;
 }
 
+#map_canvas, #changesBar{
+  transition: height 1s linear;
+}
+
 #loader2 {
   position: fixed;
   z-index: 1100;
@@ -387,4 +391,48 @@ select::-ms-expand {
 }
 .load{
   background: transparent url('img/imgLoader.gif') center no-repeat;
+}
+#tudo{
+  width: 200px;
+  margin: 0 auto;
+}
+#sizeView{
+  position:relative;
+  float: right;
+  width: 122px;
+  height: 122px;
+}
+#changesBarView{
+  width: 100%;
+  position: absolute;
+  height: 25%;
+  bottom: 0px;
+  z-index: 1;
+  background-color: black;
+}
+.line{
+  width: 100%;
+  height: 5px;
+  margin: 0px 0px 1px 0px;
+}
+
+.line.war{
+  background:#c5d200 !important;
+}
+
+.line.crit{
+  background:#ff6a00 !important;
+}
+
+.line.down{
+  background:#770101 !important;
+}
+#view{
+  float: right;
+}
+.slider.slider-vertical{
+  height: 122px !important;
+}
+.slider-track-high {
+  background: #BABABA !important;
 }
