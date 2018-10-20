@@ -123,8 +123,6 @@ p {
 	z-index: -10
 }
 
-
-
 /*Cookie Consent Begin*/
 #cookieConsent {
 	background-color: rgba(20,20,20,0.8);
@@ -171,7 +169,6 @@ p {
 	background-color: #E0C91F;
 }
 /*Cookie Consent End*/
-
 
 a {
 	text-decoration: none;
@@ -464,7 +461,11 @@ input:checked + span > img{ /* (RADIO CHECKED) IMAGE STYLES */
 	height: 122px !important;
 }
 .slider-track-high {
-	background: #BABABA !important;
+	background: #ababab !important;
+}
+
+.slider-selection{
+	background: #eaeaea !important;
 }
 
 @media only screen and (max-width: 400px) {

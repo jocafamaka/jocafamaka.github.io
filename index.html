@@ -27,7 +27,7 @@
 	@-webkit-keyframes fadeout {from {bottom: 30px; opacity: 1;} to {bottom: 60px; opacity: 0;}}
 	@keyframes fadeout {from {bottom: 30px; opacity: 1;}to {bottom: 60px; opacity: 0;}}
 </style>
-<link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="resources/style.min.css">
 <link rel="icon" href="resources/NagFavIcon.ico">
 <link rel="stylesheet" href="resources/sa/sweetalert2.min.css">
 <link rel="stylesheet" href="resources/bootstrap-slider.min.css">
@@ -228,7 +228,7 @@
 			{
 				title: 'ChangesBar size on screen!',
 				html: '<br><div id="tudo"><input id="ex6" type="text" data-slider-min="25" data-slider-tooltip="hide" data-slider-max="50" data-slider-step="1" data-slider-value="25" data-slider-orientation="vertical"/><div id="view"><div id="sizeView"><div id="changesBarView"><div class="line down"></div><div class="line crit"></div><div class="line war"></div></div></div></div></div>',
-				onBeforeOpen: function(){$("#ex6").slider({reversed : true});$("#ex6").on("change", function(slideEvt){$("#changesBarView").height(sizeBar = slideEvt.value.newValue);});}
+				onBeforeOpen: function(){sizeBar=25;$("#ex6").slider({reversed : true});$("#ex6").on("change", function(slideEvt){$("#changesBarView").height((sizeBar = slideEvt.value.newValue) + '%');});}
 			},
 			{
 				title: 'Select map type/style!',
