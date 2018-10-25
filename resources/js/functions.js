@@ -5,27 +5,18 @@
   * See the project: https://github.com/jocafamaka/nagmapReborn
   */
 
-  function addLines(){
+  function changeLines(add){
     for(host = 0 ; host < hostStatus.length ; host++){
       if(Array.isArray(hostStatus[host].parents)){
         for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
           for (var ii = LINES.length - 1; ii >= 0; ii--) {
-            if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-              LINES[ii].line.setMap(window.map);
+            if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent)){
+              if(add)
+                LINES[ii].line.setMap(window.map);
+              else
+                LINES[ii].line.setMap(null);
+            }
           }   
-        }
-      }
-    }
-  };
-
-  function removeLines(){
-    for(host = 0 ; host < hostStatus.length ; host++){
-      if(Array.isArray(hostStatus[host].parents)){
-        for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
-          for (var ii = LINES.length - 1; ii >= 0; ii--) {
-            if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-              LINES[ii].line.setMap(null);
-          }          
         }
       }
     }
@@ -185,7 +176,7 @@
       if (result.value) {
         var r = result.value;
         changeIconStyle(r[0]);
-        (r[1] == 1) ? addLines() : removeLines();
+        (r[1] == 1) ? changeLines(true) : changeLines(false);
         changeSize(sizeBar);
         changeStyle(r[3]);
         swal({
