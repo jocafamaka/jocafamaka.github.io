@@ -136,41 +136,48 @@
     {
       title: 'Select the style of the icons!',
       inputOptions:{
-        '0': '<img class="al62x43 load" title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
-        '1': '<img class="al62x43 load" title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
-        '2': '<img class="al62x43 load" title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
+        '0': '<img class="al62x43 load caption" data-caption="Retro" title="Retro" src="resources/img/icons/select/IconsStyle-1.png">',
+        '1': '<img class="al62x43 load caption" data-caption="With shadow" title="With shadow" src="resources/img/icons/select/IconsStyle-2.png">',
+        '2': '<img class="al62x43 load caption" data-caption="With border" title="With border" src="resources/img/icons/select/IconsStyle-3.png">',
       },
+      footer: ' ',
       inputValidator: (value) => {
         return !value && 'You need to choose something!'
-      }
+      },
+        onBeforeOpen: function(){$('.caption').click(function(){$('.swal2-footer').text($(this).data('caption'));});}
     },
     {
       title: 'Show line between parents?',
       inputOptions:{
-        '1': '<img class="al142x100 load" title="On" src="resources/img/lines/on.png">',
-        '3': '<img class="al142x100 load" title="Off" src="resources/img/lines/off.png">',
+        '1': '<img class="al142x100 load caption" data-caption="Show" title="Show" src="resources/img/lines/on.png">',
+        '3': '<img class="al142x100 load caption" data-caption="Hide" title="Hide" src="resources/img/lines/off.png">',
       },
+      footer: ' ',
       inputValidator: (value) => {
         return !value && 'You need to choose something!'
-      }
+      },
+        onBeforeOpen: function(){$('.caption').click(function(){$('.swal2-footer').text($(this).data('caption'));});}
     },
     {
       title: 'ChangesBar size on screen!',
       html: '<br><div id="tudo"><input id="ex6" type="text" data-slider-min="25" data-slider-tooltip="hide" data-slider-max="50" data-slider-step="1" data-slider-value="25" data-slider-orientation="vertical"/><div id="view"><div id="sizeView"><img class="al122x122 load" src="resources/img/styles/roadmap.png"><div id="changesBarView"><div class="line down"></div><div class="line crit"></div><div class="line war"></div></div></div></div></div>',
-      onBeforeOpen: function(){sizeBar=25;$("#ex6").slider({reversed : true});$("#ex6").on("change", function(slideEvt){$("#changesBarView").height((sizeBar = slideEvt.value.newValue) + '%');});}
+      footer: '25%',
+      onBeforeOpen: function(){sizeBar=25;$("#ex6").slider({reversed : true});$("#ex6").on("change", function(slideEvt){$("#changesBarView").height((sizeBar = slideEvt.value.newValue) + '%');$('.swal2-footer').text(slideEvt.value.newValue + "%");});}
     },
     {
       title: 'Select map type/style!',
       inputOptions:{
-        '0': '<img class="al122x122 load" title="Roadmap type" src="resources/img/styles/roadmap.png">',
-        '1': '<img class="al122x122 load" title="Satellite type" src="resources/img/styles/satellite.png"><br>',
-        '2': '<img class="al122x122 load" title="Terrain type" src="resources/img/styles/terrain.png">',
-        '3': '<img class="al122x122 load" title="Dark custom style" src="resources/img/styles/dark.png">',
+        '0': '<img class="al122x122 load caption" data-caption="Roadmap" title="Roadmap type" src="resources/img/styles/roadmap.png">',
+        '1': '<img class="al122x122 load caption" data-caption="Satellite" title="Satellite type" src="resources/img/styles/satellite.png"><br>',
+        '2': '<img class="al122x122 load caption" data-caption="Terrain" title="Terrain type" src="resources/img/styles/terrain.png">',
+        '3': '<img class="al122x122 load caption" data-caption="Dark custom style" title="Dark custom style" src="resources/img/styles/dark.png">',
       },
+      footer: ' ',
       inputValidator: (value) => {
         return !value && 'You need to choose something!'
       },
-      confirmButtonText: 'Finish'
+      confirmButtonText: 'Finish',
+      onBeforeOpen: function(){$('.caption').click(function(){$('.swal2-footer').text($(this).data('caption'));});}
     }
     ]).then((result) => {
       if (result.value) {
