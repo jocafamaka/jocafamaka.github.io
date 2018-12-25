@@ -1,5 +1,6 @@
 <!-- 
   * NagMap Reborn Live Preview
+  * Refer: v1.6.3-alpha_C
   * Developed by: João Carlos Rodrigues Ribeiro
   * 24/09/2018 - 01:08:20
   * See the project: https://github.com/jocafamaka/nagmapReborn
@@ -26,550 +27,371 @@
 
   sizeBar = 25;
 
-    // Defines the array used for the comparisons.
-    var hostStatus = [{"host_name":"xMain_Hostx","time":"1522587837","nagios_host_name":"Main_Host","alias":"Main_Host","status":0},{"host_name":"xHost_1x","time":"1527537306","nagios_host_name":"Host_1","alias":"Host_1","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_2x","time":"1527597829","nagios_host_name":"Host_2","alias":"Host_2","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_3x","time":"1527410227","nagios_host_name":"Host_3","alias":"Host_3","parents":["xMain_Hostx"],"status":2},{"host_name":"xHost_4x","time":"1527591240","nagios_host_name":"Host_4","alias":"Host_4","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_5x","time":"1527246451","nagios_host_name":"Host_5","alias":"Host_5","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_6x","time":"1527259825","nagios_host_name":"Host_6","alias":"Host_6","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_7x","time":"1527593748","nagios_host_name":"Host_7","alias":"Host_7","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_8x","time":"1527536656","nagios_host_name":"Host_8","alias":"Host_8","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_9x","time":"1527605778","nagios_host_name":"Host_9","alias":"Host_9","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_10x","time":"1527317615","nagios_host_name":"Host_10","alias":"Host_10","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_11x","time":"1527592466","nagios_host_name":"Host_11","alias":"Host_11","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_12x","time":"1527592466","nagios_host_name":"Host_12","alias":"Host_12","parents":["xHost_2x"],"status":0},{"host_name":"xHost_13x","time":"1527592466","nagios_host_name":"Host_13","alias":"Host_13","parents":["xHost_2x"],"status":0}];
+  var hostStatus = [{"host_name":"xMain_Hostx","time":"1522587837","nagios_host_name":"Main_Host","alias":"Main_Host","status":0},{"host_name":"xHost_1x","time":"1527607303","nagios_host_name":"Host_1","alias":"Host_1","parents":["xHost_2x"],"status":1},{"host_name":"xHost_2x","time":"1527597829","nagios_host_name":"Host_2","alias":"Host_2","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_3x","time":"1527608658","nagios_host_name":"Host_3","alias":"Host_3","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_4x","time":"1527608658","nagios_host_name":"Host_4","alias":"Host_4","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_5x","time":"1527246451","nagios_host_name":"Host_5","alias":"Host_5","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_6x","time":"1527259825","nagios_host_name":"Host_6","alias":"Host_6","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_7x","time":"1527593748","nagios_host_name":"Host_7","alias":"Host_7","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_9x","time":"1527605778","nagios_host_name":"Host_9","alias":"Host_9","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_10x","time":"1527591809","nagios_host_name":"Host_10","alias":"Host_10","parents":["xHost_2x"],"status":1},{"host_name":"xHost_11x","time":"1527592466","nagios_host_name":"Host_11","alias":"Host_11","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_12x","time":"1527590008","nagios_host_name":"Host_12","alias":"Host_12","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_13x","time":"1527526335","nagios_host_name":"Host_13","alias":"Host_13","parents":["xHost_4x"],"status":0},{"host_name":"xHost_14x","time":"1527597936","nagios_host_name":"Host_14","alias":"Host_14","parents":["xMain_Hostx"],"status":0}];
 
-    var hostStatusPre = [{"host_name":"xMain_Hostx","time":"1522587837","nagios_host_name":"Main_Host","alias":"Main_Host","status":0},{"host_name":"xHost_1x","time":"1527537306","nagios_host_name":"Host_1","alias":"Host_1","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_2x","time":"1527597829","nagios_host_name":"Host_2","alias":"Host_2","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_3x","time":"1527410227","nagios_host_name":"Host_3","alias":"Host_3","parents":["xMain_Hostx"],"status":2},{"host_name":"xHost_4x","time":"1527591240","nagios_host_name":"Host_4","alias":"Host_4","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_5x","time":"1527246451","nagios_host_name":"Host_5","alias":"Host_5","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_6x","time":"1527259825","nagios_host_name":"Host_6","alias":"Host_6","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_7x","time":"1527593748","nagios_host_name":"Host_7","alias":"Host_7","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_8x","time":"1527536656","nagios_host_name":"Host_8","alias":"Host_8","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_9x","time":"1527605778","nagios_host_name":"Host_9","alias":"Host_9","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_10x","time":"1527317615","nagios_host_name":"Host_10","alias":"Host_10","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_11x","time":"1527592466","nagios_host_name":"Host_11","alias":"Host_11","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_12x","time":"1527592466","nagios_host_name":"Host_12","alias":"Host_12","parents":["xHost_2x"],"status":0},{"host_name":"xHost_13x","time":"1527592466","nagios_host_name":"Host_13","alias":"Host_13","parents":["xHost_2x"],"status":0}];
+  var hostStatusPre = [{"host_name":"xMain_Hostx","time":"1522587837","nagios_host_name":"Main_Host","alias":"Main_Host","status":0},{"host_name":"xHost_1x","time":"1527607303","nagios_host_name":"Host_1","alias":"Host_1","parents":["xHost_2x"],"status":1},{"host_name":"xHost_2x","time":"1527597829","nagios_host_name":"Host_2","alias":"Host_2","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_3x","time":"1527608658","nagios_host_name":"Host_3","alias":"Host_3","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_4x","time":"1527608658","nagios_host_name":"Host_4","alias":"Host_4","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_5x","time":"1527246451","nagios_host_name":"Host_5","alias":"Host_5","parents":["xMain_Hostx"],"status":3},{"host_name":"xHost_6x","time":"1527259825","nagios_host_name":"Host_6","alias":"Host_6","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_7x","time":"1527593748","nagios_host_name":"Host_7","alias":"Host_7","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_9x","time":"1527605778","nagios_host_name":"Host_9","alias":"Host_9","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_10x","time":"1527591809","nagios_host_name":"Host_10","alias":"Host_10","parents":["xHost_2x"],"status":1},{"host_name":"xHost_11x","time":"1527592466","nagios_host_name":"Host_11","alias":"Host_11","parents":["xMain_Hostx"],"status":1},{"host_name":"xHost_12x","time":"1527590008","nagios_host_name":"Host_12","alias":"Host_12","parents":["xMain_Hostx"],"status":0},{"host_name":"xHost_13x","time":"1527526335","nagios_host_name":"Host_13","alias":"Host_13","parents":["xHost_4x"],"status":0},{"host_name":"xHost_14x","time":"1527597936","nagios_host_name":"Host_14","alias":"Host_14","parents":["xMain_Hostx"],"status":0}];
 
-    var max;
+  var max;
 
-    for (var ii = 1 ; ii < hostStatusPre.length ; ii++) {
-      for (var i = 1 ; i < hostStatusPre.length ; i++) {
-        if (hostStatusPre[i].time < hostStatusPre[i-1].time){
-          max = hostStatusPre[i-1];
-          hostStatusPre[i-1] = hostStatusPre[i];
-          hostStatusPre[i] = max;
-        }
+  for (var ii = 1 ; ii < hostStatusPre.length ; ii++) {
+    for (var i = 1 ; i < hostStatusPre.length ; i++) {
+      if (hostStatusPre[i].time < hostStatusPre[i-1].time){
+        max = hostStatusPre[i-1];
+        hostStatusPre[i-1] = hostStatusPre[i];
+        hostStatusPre[i] = max;
       }
     }
+  }
 
-    //Defines the array that will contain the marks.
-    var MARK = [];
+  var MARK = [];
 
-    //Defines the array that will contain the Polylines.
-    var LINES = [];
+  var LINES = [];
 
-    //Define the source of the audio file.
-    var audio = new Audio('Beep.mp3');
+  var INFO = [];
 
-    //Define icons style.
-    var iconRed = {
-      url: 'resources/img/icons/MarkerRedSt-1.png',
-      size: new google.maps.Size(29, 43),
-      anchor: new google.maps.Point(14, 42)
-    };
+  clicked = false;
 
-    var iconGreen = {
-      url: 'resources/img/icons/MarkerGreenSt-1.png',
-      size: new google.maps.Size(29, 43),
-      anchor: new google.maps.Point(14, 42)
-    };
+  var audio = new Audio('Beep.mp3');
 
-    var iconOrange = {
-      url: 'resources/img/icons/MarkerOrangeSt-1.png',
-      size: new google.maps.Size(29, 43),
-      anchor: new google.maps.Point(14, 42)
-    };
+  var iconRed = {
+    url: 'resources/img/icons/MarkerRedSt-1.png',
+    size: new google.maps.Size(29, 43),
+    anchor: new google.maps.Point(14, 42)
+  };
 
-    var iconYellow = {
-      url: 'resources/img/icons/MarkerYellowSt-1.png',
-      size: new google.maps.Size(29, 43),
-      anchor: new google.maps.Point(14, 42)
-    };
+  var iconGreen = {
+    url: 'resources/img/icons/MarkerGreenSt-1.png',
+    size: new google.maps.Size(29, 43),
+    anchor: new google.maps.Point(14, 42)
+  };
 
-    var iconGrey = {
-      url: 'resources/img/icons/MarkerGreySt-1.png',
-      size: new google.maps.Size(29, 43),
-      anchor: new google.maps.Point(14, 42)
-    };
+  var iconOrange = {
+    url: 'resources/img/icons/MarkerOrangeSt-1.png',
+    size: new google.maps.Size(29, 43),
+    anchor: new google.maps.Point(14, 42)
+  };
 
-    //static code from index.php
-    function initialize() {
+  var iconYellow = {
+    url: 'resources/img/icons/MarkerYellowSt-1.png',
+    size: new google.maps.Size(29, 43),
+    anchor: new google.maps.Point(14, 42)
+  };
 
-      window.map = new google.maps.Map(document.getElementById("map_canvas"),{
-        zoom: 6.1,
-        maxZoom: 8.1,
-        minZoom: 4.1,
-        center: new google.maps.LatLng(-6.469293, -50.913464),
-        zoomControl: false,
-        mapTypeControl: true,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-        mapTypeId: google.maps.MapTypeId.ROADMAP      });
+  var iconGrey = {
+    url: 'resources/img/icons/MarkerGreySt-1.png',
+    size: new google.maps.Size(29, 43),
+    anchor: new google.maps.Point(14, 42)
+  };
 
-      onInit();
+  function initialize(){
+   window.map = new google.maps.Map(document.getElementById("map"),{
+    zoom: 6.1,
+    maxZoom: 8.1,
+    minZoom: 4.1,
+    center: new google.maps.LatLng(-6.469293, -50.913464),
+    zoomControl: false,
+    mapTypeControl: true,
+    scaleControl: false,
+    streetViewControl: false,
+    rotateControl: false,
+    fullscreenControl: false,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });    
 
-      var tilesLoadedCount = 0;
-      google.maps.event.addListener(map, 'tilesloaded', function() {
-        tilesLoadedCount++;
-        if (tilesLoadedCount === 1) {
+   onInit();
 
-          if(GetURLParameter('icons'))
-            changeIconStyle(GetURLParameter('icons'));
+   var tilesLoadedCount = 0;
 
-          if(GetURLParameter('lines'))
-            (GetURLParameter('lines') == 1) ? changeLines(true) : changeLines(false);
+   google.maps.event.addListener(map, 'tilesloaded', function() {
+    tilesLoadedCount++;
+    if (tilesLoadedCount === 1) {
 
-          if(GetURLParameter('type'))
-            changeStyle(GetURLParameter('type'));
+      if(GetURLParameter('icons'))
+        changeIconStyle(GetURLParameter('icons'));
 
-          if(GetURLParameter('size'))
-            changeSize(GetURLParameter('size'));
+      if(GetURLParameter('lines'))
+        (GetURLParameter('lines') == 1) ? changeLines(true) : changeLines(false);
 
-          $('#loader2').css("opacity", "0");
-          
-          clearTimeout(slow);
+      if(GetURLParameter('type'))
+        changeStyle(GetURLParameter('type'));
 
-          setTimeout(function(){
-            $('#loader2').hide();
-            swal({
-              type: 'success',
-              title: 'Welcome to NagMap Reborn!',
-              text: 'Due to the limitation of architecture (user-side only) it was not possible to represent some of the features and options of NagMap Reborn, however through this page you can get a working idea of the NagMap Reborn.',
-              footer: 'The data presented here are only demonstrative and generated randomly, but the occurrences represent the actual behavior of the application as the hosts change.',
-              confirmButtonText: 'OK'
-            }); 
-          }, 900);
+      if(GetURLParameter('size'))
+        changeSize(GetURLParameter('size'));
 
-          setInterval(
-            function(){ // Request the arrau with the update status of each host.
-              arrayHosts = randomStatus(); 
-              for (var i = 0; i < hostStatus.length; i++) {
-                if((arrayHosts[hostStatus[i].nagios_host_name].status != -1) && (hostStatus[i].status != arrayHosts[hostStatus[i].nagios_host_name].status)){ //Call the update function if the last status is different from the current status.'
-                  if(hostStatus[i].status == 1)
-                    removeHost(i, "WAR");
-                  if(hostStatus[i].status == 2)
-                    removeHost(i, "CRIT");
-                  if(hostStatus[i].status == 3){
-                    if(arrayHosts[hostStatus[i].nagios_host_name].status < 3)
-                      toastr["success"](hostStatus[i].alias);
-                    removeHost(i, "DOWN");
-                  }
-                  updateStatus(i, arrayHosts[hostStatus[i].nagios_host_name].status);
+      $('#loader2').css("opacity", "0");
 
-                  if(arrayHosts[hostStatus[i].nagios_host_name].status == 1){
-                    addHost(i, "WAR", arrayHosts[hostStatus[i].nagios_host_name].time);
-                  }
-                  if(arrayHosts[hostStatus[i].nagios_host_name].status == 2){
-                    addHost(i, "CRIT", arrayHosts[hostStatus[i].nagios_host_name].time);
-                  }
-                  if(arrayHosts[hostStatus[i].nagios_host_name].status == 3){
-                    addHost(i, "DOWN", arrayHosts[hostStatus[i].nagios_host_name].time);
-                  }                  
-                }
-                else{
-                  if(hostStatus[i].status == 1)
-                    document.getElementById(hostStatus[i].nagios_host_name+"-WAR").innerHTML = hostStatus[i].alias + " - " + arrayHosts[hostStatus[i].nagios_host_name].time + " ago.";
-                  if(hostStatus[i].status == 2)
-                    document.getElementById(hostStatus[i].nagios_host_name+"-CRIT").innerHTML = hostStatus[i].alias + " - " + arrayHosts[hostStatus[i].nagios_host_name].time + " ago.";
-                  if(hostStatus[i].status == 3)
-                    document.getElementById(hostStatus[i].nagios_host_name+"-DOWN").innerHTML = hostStatus[i].alias + " - " + arrayHosts[hostStatus[i].nagios_host_name].time + " ago.";                    
-                }
+      clearTimeout(slow);
+
+      setTimeout(function(){
+        $('#loader2').hide();
+        swal({
+          type: 'success',
+          title: 'Welcome to NagMap Reborn!',
+          text: 'Due to the limitation of architecture (user-side only) it was not possible to represent some of the features and options of NagMap Reborn, however through this page you can get a working idea of the NagMap Reborn.',
+          footer: 'The data presented here are only demonstrative and generated randomly, but the occurrences represent the actual behavior of the application as the hosts change.',
+          confirmButtonText: 'OK'
+        }); 
+      }, 900);
+
+      setInterval(
+        function(){ 
+          arrayHosts = randomStatus(); 
+          for (var i = 0; i < hostStatus.length; i++) {
+            if((arrayHosts[hostStatus[i].nagios_host_name].status != -1) && (hostStatus[i].status != arrayHosts[hostStatus[i].nagios_host_name].status)){ 
+              if(hostStatus[i].status == 1)
+                removeHost(i, "WAR");
+              if(hostStatus[i].status == 2)
+                removeHost(i, "CRIT");
+              if(hostStatus[i].status == 3){
+                if(arrayHosts[hostStatus[i].nagios_host_name].status < 3)
+                  toastr["success"](hostStatus[i].alias);
+                removeHost(i, "DOWN");
               }
-            }, 10000);
-        }
-      });
+              updateStatus(i, arrayHosts[hostStatus[i].nagios_host_name].status);
 
-// generating dynamic code from here
-// if the page ends here, there is something seriously wrong, please contact joao_carlos.r@hotmail.com for help
+              if(arrayHosts[hostStatus[i].nagios_host_name].status == 1){
+                addHost(i, "WAR", arrayHosts[hostStatus[i].nagios_host_name].time);
+              }
+              if(arrayHosts[hostStatus[i].nagios_host_name].status == 2){
+                addHost(i, "CRIT", arrayHosts[hostStatus[i].nagios_host_name].time);
+              }
+              if(arrayHosts[hostStatus[i].nagios_host_name].status == 3){
+                addHost(i, "DOWN", arrayHosts[hostStatus[i].nagios_host_name].time);
+              }                  
+            }
+            else{
+              if(hostStatus[i].status == 1)
+                document.getElementById(hostStatus[i].nagios_host_name+"-WAR").innerHTML = hostStatus[i].alias + " - " + arrayHosts[hostStatus[i].nagios_host_name].time + " ago.";
+              if(hostStatus[i].status == 2)
+                document.getElementById(hostStatus[i].nagios_host_name+"-CRIT").innerHTML = hostStatus[i].alias + " - " + arrayHosts[hostStatus[i].nagios_host_name].time + " ago.";
+              if(hostStatus[i].status == 3)
+                document.getElementById(hostStatus[i].nagios_host_name+"-DOWN").innerHTML = hostStatus[i].alias + " - " + arrayHosts[hostStatus[i].nagios_host_name].time + " ago.";                    
+            }
+          }
+          if($('#searchBar').val().toLowerCase() != '')
+            search();
+        }, 10000);
+    }
+  });
 
-//Filling array of Polylines
-LINES.push({line: null, host:"xHost_1x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_2x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_3x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_4x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_5x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_6x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_7x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_8x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_9x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_10x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_11x", parent:"xMain_Hostx"});
-LINES.push({line: null, host:"xHost_12x", parent:"xHost_2x"});
-LINES.push({line: null, host:"xHost_13x", parent:"xHost_2x"});
+   LINES.push({line: null, host:"xHost_1x", parent:"xHost_2x"});
+   LINES.push({line: null, host:"xHost_2x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_3x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_4x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_5x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_6x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_7x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_9x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_10x", parent:"xHost_2x"});
+   LINES.push({line: null, host:"xHost_11x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_12x", parent:"xMain_Hostx"});
+   LINES.push({line: null, host:"xHost_13x", parent:"xHost_4x"});
+   LINES.push({line: null, host:"xHost_14x", parent:"xMain_Hostx"});
 
+   window.xMain_Hostx_pos = new google.maps.LatLng(-5.118663, -52.413856);
+   MARK.push(new google.maps.Marker({ position: xMain_Hostx_pos, icon: iconGreen, map: map, zIndex: 2, title: "Main_Host"}));
 
-window.xMain_Hostx_pos = new google.maps.LatLng(-5.118663, -52.413856);
-MARK.push(new google.maps.Marker({
-  position: xMain_Hostx_pos,
-  icon: iconGreen,
-  map: map,
-  zIndex: 2,
-  title: "Main_Host"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Main_Host</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Main_Host</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.0.1</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> </td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[0], 'click', function() {openPopup(0, false);});
 
-window.xMain_Hostx_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Main_Host</strong><br><table><tr><td>Alias</td><td>:</td><td> Main_Host</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.0.1</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> </td></tr></table>'})
-google.maps.event.addListener(MARK[0], 'click', function() {xMain_Hostx_mark_infowindow.open(map, MARK[0]);});
+   window.xHost_1x_pos = new google.maps.LatLng(-2.311988, -56.984610);
+   MARK.push(new google.maps.Marker({ position: xHost_1x_pos, icon: iconYellow, map: map, zIndex: 3, title: "Host_1"}));
 
-window.xHost_1x_pos = new google.maps.LatLng(-10.615059, -48.245682);
-MARK.push(new google.maps.Marker({
-  position: xHost_1x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_1"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_1</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_1</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xHost_2x</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[1], 'click', function() {openPopup(1, false);});
 
-window.xHost_1x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_1</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_1</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[1], 'click', function() {xHost_1x_mark_infowindow.open(map, MARK[1]);});
+   window.xHost_2x_pos = new google.maps.LatLng(-4.256261, -55.992724);
+   MARK.push(new google.maps.Marker({ position: xHost_2x_pos, icon: iconYellow, map: map, zIndex: 3, title: "Host_2"}));
 
-window.xHost_2x_pos = new google.maps.LatLng(-4.256261, -55.992724);
-MARK.push(new google.maps.Marker({
-  position: xHost_2x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_2"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_2</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_2</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[2], 'click', function() {openPopup(2, false);});
 
-window.xHost_2x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_2</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_2</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[2], 'click', function() {xHost_2x_mark_infowindow.open(map, MARK[2]);});
+   window.xHost_3x_pos = new google.maps.LatLng(-11.750317, -55.521140);
+   MARK.push(new google.maps.Marker({ position: xHost_3x_pos, icon: iconRed, map: map, zIndex: 5, title: "Host_3"}));
 
-window.xHost_3x_pos = new google.maps.LatLng(-11.750317, -55.521140);
-MARK.push(new google.maps.Marker({
-  position: xHost_3x_pos,
-  icon: iconOrange,
-  map: map,
-  zIndex: 4,
-  title: "Host_3"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_3</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_3</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[3], 'click', function() {openPopup(3, false);});
 
-window.xHost_3x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_3</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_3</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[3], 'click', function() {xHost_3x_mark_infowindow.open(map, MARK[3]);});
+   window.xHost_4x_pos = new google.maps.LatLng(-9.405606, -40.427065);
+   MARK.push(new google.maps.Marker({ position: xHost_4x_pos, icon: iconRed, map: map, zIndex: 5, title: "Host_4"}));
 
-window.xHost_4x_pos = new google.maps.LatLng(-9.405606, -40.427065);
-MARK.push(new google.maps.Marker({
-  position: xHost_4x_pos,
-  icon: iconGreen,
-  map: map,
-  zIndex: 2,
-  title: "Host_4"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_4</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_4</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[4], 'click', function() {openPopup(4, false);});
 
-window.xHost_4x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_4</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_4</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[4], 'click', function() {xHost_4x_mark_infowindow.open(map, MARK[4]);});
+   window.xHost_5x_pos = new google.maps.LatLng(-7.252788, -57.567883);
+   MARK.push(new google.maps.Marker({ position: xHost_5x_pos, icon: iconRed, map: map, zIndex: 5, title: "Host_5"}));
 
-window.xHost_5x_pos = new google.maps.LatLng(-7.252788, -57.567883);
-MARK.push(new google.maps.Marker({
-  position: xHost_5x_pos,
-  icon: iconRed,
-  map: map,
-  zIndex: 5,
-  title: "Host_5"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_5</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_5</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[5], 'click', function() {openPopup(5, false);});
 
-window.xHost_5x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_5</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_5</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 193.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[5], 'click', function() {xHost_5x_mark_infowindow.open(map, MARK[5]);});
+   window.xHost_6x_pos = new google.maps.LatLng(-5.456002, -49.126467);
+   MARK.push(new google.maps.Marker({ position: xHost_6x_pos, icon: iconGreen, map: map, zIndex: 2, title: "Host_6"}));
 
-window.xHost_6x_pos = new google.maps.LatLng(-5.306753, -49.143266);
-MARK.push(new google.maps.Marker({
-  position: xHost_6x_pos,
-  icon: iconGreen,
-  map: map,
-  zIndex: 2,
-  title: "Host_6"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_6</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_6</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[6], 'click', function() {openPopup(6, false);});
 
-window.xHost_6x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_6</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_6</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[6], 'click', function() {xHost_6x_mark_infowindow.open(map, MARK[6]);});
+   window.xHost_7x_pos = new google.maps.LatLng(-4.5593878,-45.1285913);
+   MARK.push(new google.maps.Marker({ position: xHost_7x_pos, icon: iconYellow, map: map, zIndex: 3, title: "Host_7"}));
 
-window.xHost_7x_pos = new google.maps.LatLng(-4.5593878,-45.1285913);
-MARK.push(new google.maps.Marker({
-  position: xHost_7x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_7"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_7</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_7</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[7], 'click', function() {openPopup(7, false);});
 
-window.xHost_7x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_7</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_7</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[7], 'click', function() {xHost_7x_mark_infowindow.open(map, MARK[7]);});
+   window.xHost_9x_pos = new google.maps.LatLng(-2.77588,-44.0618863);
+   MARK.push(new google.maps.Marker({ position: xHost_9x_pos, icon: iconYellow, map: map, zIndex: 3, title: "Host_9"}));
 
-window.xHost_8x_pos = new google.maps.LatLng(-4.8762965,-44.8800709);
-MARK.push(new google.maps.Marker({
-  position: xHost_8x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_8"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_9</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_9</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[8], 'click', function() {openPopup(8, false);});
 
-window.xHost_8x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_8</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_8</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[8], 'click', function() {xHost_8x_mark_infowindow.open(map, MARK[8]);});
+   window.xHost_10x_pos = new google.maps.LatLng(-1.490567, -54.869397);
+   MARK.push(new google.maps.Marker({ position: xHost_10x_pos, icon: iconYellow, map: map, zIndex: 3, title: "Host_10"}));
 
-window.xHost_9x_pos = new google.maps.LatLng(-2.77588,-44.0618863);
-MARK.push(new google.maps.Marker({
-  position: xHost_9x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_9"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_10</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_10</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xHost_2x</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[9], 'click', function() {openPopup(9, false);});
 
-window.xHost_9x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_9</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_9</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[9], 'click', function() {xHost_9x_mark_infowindow.open(map, MARK[9]);});
+   window.xHost_11x_pos = new google.maps.LatLng(-5.5201661,-43.1991936);
+   MARK.push(new google.maps.Marker({ position: xHost_11x_pos, icon: iconYellow, map: map, zIndex: 3, title: "Host_11"}));
 
-window.xHost_10x_pos = new google.maps.LatLng(-4.129612,-44.117795);
-MARK.push(new google.maps.Marker({
-  position: xHost_10x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_10"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_11</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_11</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[10], 'click', function() {openPopup(10, false);});
 
-window.xHost_10x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_10</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_10</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[10], 'click', function() {xHost_10x_mark_infowindow.open(map, MARK[10]);});
+   window.xHost_12x_pos = new google.maps.LatLng(-10.957911, -49.496558);
+   MARK.push(new google.maps.Marker({ position: xHost_12x_pos, icon: iconGreen, map: map, zIndex: 2, title: "Host_12"}));
 
-window.xHost_11x_pos = new google.maps.LatLng(-2.5324021,-44.2771924);
-MARK.push(new google.maps.Marker({
-  position: xHost_11x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_11"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_12</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_12</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[11], 'click', function() {openPopup(11, false);});
 
-window.xHost_11x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_11</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_11</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls<br>Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 193.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td>xMain_Hostx</td></tr></table>'})
-google.maps.event.addListener(MARK[11], 'click', function() {xHost_11x_mark_infowindow.open(map, MARK[11]);});
+   window.xHost_13x_pos = new google.maps.LatLng(-6.978428, -36.860779);
+   MARK.push(new google.maps.Marker({ position: xHost_13x_pos, icon: iconGreen, map: map, zIndex: 2, title: "Host_13"}));
 
-window.xHost_12x_pos = new google.maps.LatLng(-1.835551, -55.739113);
-MARK.push(new google.maps.Marker({
-  position: xHost_12x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_12"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_13</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_13</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xHost_4x</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[12], 'click', function() {openPopup(12, false);});
 
-window.xHost_12x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_12</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_12</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls<br>Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 193.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td>xHost_2x</td></tr></table>'})
-google.maps.event.addListener(MARK[12], 'click', function() {xHost_11x_mark_infowindow.open(map, MARK[12]);});
+   window.xHost_14x_pos = new google.maps.LatLng(-3.282233, -52.184760);
+   MARK.push(new google.maps.Marker({ position: xHost_14x_pos, icon: iconGreen, map: map, zIndex: 2, title: "Host_14"}));
 
-window.xHost_13x_pos = new google.maps.LatLng(-3.196904, -58.559593);
-MARK.push(new google.maps.Marker({
-  position: xHost_13x_pos,
-  icon: iconYellow,
-  map: map,
-  zIndex: 3,
-  title: "Host_13"}));
+   INFO.push(new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_14</strong><br><table><tr onclick=\"filterBy(this);\" class=\"filter\"><td>Alias</td><td>:</td><td tooltip=\"Use as a filter\" tooltip-position=\"buttom\"> Host_14</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 192.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td> xMain_Hostx</td></tr></table><center><a href="https://www.github.com/jocafamaka/nagmapReborn/" target="_blank"><img title="Project on GitHub" src="resources/img/logoMiniBlack.png" alt=""></a><center>'}));
+   google.maps.event.addListener(MARK[13], 'click', function() {openPopup(13, false);});
 
-window.xHost_13x_mark_infowindow = new google.maps.InfoWindow({ content: '<div class=\"bubble\"><strong>Host_13</strong><br><table><tr><td>Alias</td><td>:</td><td> Host_13</td></tr><tr><td>Hostgroups</td><td>:</td><td> Firewalls<br>Firewalls</td></tr><tr><td>Address</td><td>:</td><td> 193.168.xx.xx</td></tr><tr><td>Other</td><td>:</td><td> </td></tr><tr><td>Parents</td><td>:</td><td>xHost_2x</td></tr></table>'})
-google.maps.event.addListener(MARK[13], 'click', function() {xHost_11x_mark_infowindow.open(map, MARK[13]);});
-
-// generating links between hosts
-
-LINES[0].line = new google.maps.Polyline({
- path: [xHost_1x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[0].line.setMap(map);
-
-
-LINES[1].line = new google.maps.Polyline({
- path: [xHost_2x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[1].line.setMap(map);
-
-
-LINES[2].line = new google.maps.Polyline({
- path: [xHost_3x_pos,xMain_Hostx_pos],
- strokeColor: "#d25700",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[2].line.setMap(map);
-
-
-LINES[3].line = new google.maps.Polyline({
- path: [xHost_4x_pos,xMain_Hostx_pos],
- strokeColor: "#ffff00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[3].line.setMap(map);
-
-
-LINES[4].line = new google.maps.Polyline({
- path: [xHost_5x_pos,xMain_Hostx_pos],
- strokeColor: "#c92a2a",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[4].line.setMap(map);
-
-
-LINES[5].line = new google.maps.Polyline({
- path: [xHost_6x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[5].line.setMap(map);
-
-
-LINES[6].line = new google.maps.Polyline({
- path: [xHost_7x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[6].line.setMap(map);
-
-
-LINES[7].line = new google.maps.Polyline({
- path: [xHost_8x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[7].line.setMap(map);
-
-
-LINES[8].line = new google.maps.Polyline({
- path: [xHost_9x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[8].line.setMap(map);
-
-
-LINES[9].line = new google.maps.Polyline({
- path: [xHost_10x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[9].line.setMap(map);
-
-
-LINES[10].line = new google.maps.Polyline({
- path: [xHost_11x_pos,xMain_Hostx_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[10].line.setMap(map);
-
-
-LINES[11].line = new google.maps.Polyline({
- path: [xHost_12x_pos,xHost_2x_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[11].line.setMap(map);
-
-LINES[12].line = new google.maps.Polyline({
- path: [xHost_13x_pos,xHost_2x_pos],
- strokeColor: "#007f00",
- strokeOpacity: 0.8,
- strokeWeight: 1.5});
-LINES[12].line.setMap(map);
-
-};
+   createLine(0, xHost_1x_pos, xHost_2x_pos, "#ffff00", map);
+   createLine(1, xHost_2x_pos, xMain_Hostx_pos, "#ffff00", map);
+   createLine(2, xHost_3x_pos, xMain_Hostx_pos, "#c92a2a", map);
+   createLine(3, xHost_4x_pos, xMain_Hostx_pos, "#c92a2a", map);
+   createLine(4, xHost_5x_pos, xMain_Hostx_pos, "#c92a2a", map);
+   createLine(5, xHost_6x_pos, xMain_Hostx_pos, "#007f00", map);
+   createLine(6, xHost_7x_pos, xMain_Hostx_pos, "#ffff00", map);
+   createLine(7, xHost_9x_pos, xMain_Hostx_pos, "#ffff00", map);
+   createLine(8, xHost_10x_pos, xHost_2x_pos, "#ffff00", map);
+   createLine(9, xHost_11x_pos, xMain_Hostx_pos, "#ffff00", map);
+   createLine(10, xHost_12x_pos, xMain_Hostx_pos, "#007f00", map);
+   createLine(11, xHost_13x_pos, xHost_4x_pos, "#007f00", map);
+   createLine(12, xHost_14x_pos, xMain_Hostx_pos, "#007f00", map);
+ };
 </script>
 </head>
 <body style="margin:0px; padding:0px; overflow:hidden;" onload="initialize()">
   <div id="loader2"><div id="wait">Slow connection detected!<br>Please wait...</div><div class="lds-ripple"><div></div><div></div></div></div>
-  <div id="menu"><img onclick="showMenu();" title="Show menu" width="80px" src="resources/img/MenuIcon.png"></div>
+  <div id="menu"><img onclick="showMenu();" title="Show menu" width="69px" src="resources/img/MenuIcon.png"></div>
   <div id="content">
-    <div id="map_canvas" style="width:100%; height:75%; float: left"></div>
+    <div id="map" style="width:100%; height:75%; float: left"></div>
+    <div class="form-group">
+      <input style="font-size:20px;" type="text" id="searchBar" class="form-control" placeholder="Filter...">
+      <div class="cleanS" onclick="$('#searchBar').val('');search();" style="font-size:20px;" title="Clear"><span>Clear</span></div>
+    </div>
     <div id="changesbar" style="padding-top:2px; padding-left: 1px; background: black; height:25%; overflow:auto;">
       <div id="downHosts"></div>
       <div id="critHosts"></div>
       <div id="warHosts"></div>
+      <div class="changesBarLine WAR news" style="opacity: 0!important; font-size: 27px;">The hide one!</div>
     </div>
   </div>
   <script type="text/javascript">
-    function now(){ //Return the formated date
-      var date = new Date();   
 
-      str_day = new String(date.getDate());
-      str_month = new String((date.getMonth() + 1));
-      year = date.getFullYear();
+    function openPopup(host, search){
+      if(search){
+        for(var i = 0 ; i < hostStatus.length ; i++) 
+        {
+          if(hostStatus[i].nagios_host_name == hostStatusPre[host].nagios_host_name){
+            host = i;
+            break;
+          }
+        }
+      }
 
-      str_hours = new String(date.getHours());
-      str_minutes = new String(date.getMinutes());
-      str_seconds = new String(date.getSeconds());
+      clicked = true;
 
-      if (str_day.length < 2) 
-        str_day = 0 + str_day;
+      for(i = 0; i < INFO.length ; i++){
+        if(i == host){
+          INFO[host].open(map, MARK[host]);
+        }
+        else{
+          INFO[i].close(map);
+        }
+      }
+      setTimeout( function(){clicked = false;}, 500)
+    }; 
 
-      if (str_month.length < 2) 
-        str_month = 0 + str_month;
+    function changeLine(host, color){
+      if(Array.isArray(hostStatus[host].parents)){
+        for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
+          for (var ii = LINES.length - 1; ii >= 0; ii--) {
+            if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
+              LINES[ii].line.setOptions({strokeColor: color});
+          }          
+        }
+      }
+    };
 
-      if (str_hours.length < 2)
-        str_hours = 0 + str_hours;
+    function changeIcon(host, icon, time, zindex){
+      MARK[host].setIcon(icon);
 
-      if (str_minutes.length < 2)
-        str_minutes = 0 + str_minutes;
+      if(time == 0)
+        time = 500;
+      else
+        time = 15000;
+      MARK[host].setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function () {MARK[host].setAnimation(null);}, time);
+      MARK[host].setZIndex(zindex);
 
-      if (str_seconds.length < 2)
-        str_seconds = 0 + str_seconds;
+    };
 
-      return(date = str_day + '/' + str_month + '/' + year + ' ' + str_hours + ':' + str_minutes + ':' + str_seconds);
-    }
-    function updateStatus(host, status){  // Updates the status of the host informed and apply the animations
+    function createLine(index, hostA, hostB, lineColor, map){
+
+      LINES[index].line = new google.maps.Polyline({
+       path: [hostA, hostB],
+       strokeColor: lineColor,
+       strokeOpacity: 0.8,
+       strokeWeight: 1.5});
+      LINES[index].line.setMap(map);
+
+    };
+
+    function updateStatus(host, status){
       if(status == 0){
         hostStatus[host].status = status;
-        if(Array.isArray(hostStatus[host].parents)){
-          for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
-            for (var ii = LINES.length - 1; ii >= 0; ii--) {
-              if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-                LINES[ii].line.setOptions({strokeColor: "#59BB48"});
-            }          
-          }
-        }
-        MARK[host].setIcon(iconGreen);
-        MARK[host].setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function () {MARK[host].setAnimation(null);}, 500);
-        MARK[host].setZIndex(2);
+        changeLine(host, '#007f00');
+        changeIcon(host, iconGreen, 0, 2);    
       }else if (status == 1) {
-        if(Array.isArray(hostStatus[host].parents)){
-          for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
-            for (var ii = LINES.length - 1; ii >= 0; ii--) {
-              if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-                LINES[ii].line.setOptions({strokeColor: "#ffff00"});
-            }          
-          }
-        }
-        MARK[host].setIcon(iconYellow);
-        MARK[host].setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function () {MARK[host].setAnimation(null);}, 500);
-        MARK[host].setZIndex(3);
+        changeLine(host, '#ffff00');
+        changeIcon(host, iconYellow, 0, 3);    
         hostStatus[host].status = status;
       }else if (status == 2) {
-        if(Array.isArray(hostStatus[host].parents)){
-          for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
-            for (var ii = LINES.length - 1; ii >= 0; ii--) {
-              if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-                LINES[ii].line.setOptions({strokeColor: "#ff6a00"});
-            }          
-          }
-        }
-        MARK[host].setIcon(iconOrange);
-        MARK[host].setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function () {MARK[host].setAnimation(null);}, 500);
-        MARK[host].setZIndex(3);
+        changeLine(host, '#ff6a00');
+        changeIcon(host, iconOrange, 0, 4);    
         hostStatus[host].status = status;
       } else if (status == 3) {
         hostStatus[host].status = status;
-        if(Array.isArray(hostStatus[host].parents)){
-          for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
-            for (var ii = LINES.length - 1; ii >= 0; ii--) {
-              if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-                LINES[ii].line.setOptions({strokeColor: "#ff0000"});
-            }          
-          }
-        }
-        MARK[host].setIcon(iconRed);
-        MARK[host].setAnimation(google.maps.Animation.BOUNCE);
-        audio.play();
-        setTimeout(function () {MARK[host].setAnimation(null);}, 15000);
-        MARK[host].setZIndex(4);
+        changeLine(host, '#c92a2a');
+        changeIcon(host, iconRed, 1, 5);
+        audio.play();    
       } else {
         hostStatus[host].status = status;
-        if(Array.isArray(hostStatus[host].parents)){
-          for (var i = hostStatus[host].parents.length - 1; i >= 0; i--) {
-            for (var ii = LINES.length - 1; ii >= 0; ii--) {
-              if( (hostStatus[host].host_name == LINES[ii].host) && (hostStatus[host].parents[i] == LINES[ii].parent))
-                LINES[ii].line.setOptions({strokeColor: "#A9ABAE"});
-            }          
-          }
-        }
-        MARK[host].setIcon(iconGrey);
-        MARK[host].setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function () {MARK[host].setAnimation(null);}, 500);
-        MARK[host].setZIndex(3);
+        changeLine(host, '#A9ABAE');
+        changeIcon(host, iconGrey, 0, 2);
       }
     }
+
     function addHost(i, status, time){
-
-      var insert = ("<div class=\"changesBarLine " + status + " news\" id=\"" + hostStatus[i].nagios_host_name + "-" + status + "\" style=\"font-size: 20px; opacity:0; max-height: 0px;\">" + hostStatus[i].alias + " - " + time + " ago.</div>");
-
+      var insert = ("<div onclick=\"openPopup("+i+", false);\" class=\"changesBarLine " + status + " news\" id=\"" + hostStatus[i].nagios_host_name + "-" + status + "\" style=\"font-size: 20px; opacity:0; max-height: 0px;\">" + hostStatus[i].alias + " - " + time + " ago.</div>");
       if(status ==  "WAR"){
         document.getElementById('warHosts').insertAdjacentHTML("afterbegin", insert);
       }
@@ -579,17 +401,14 @@ LINES[12].line.setMap(map);
       if(status ==  "DOWN"){
         document.getElementById('downHosts').insertAdjacentHTML("afterbegin", insert);
       }
-
       var div = document.getElementById(hostStatus[i].nagios_host_name+"-"+status);
       setTimeout( function (){
         div.style.maxHeight =(20 + 4 ) * 2;
         div.style.opacity = "1";
       }, 80);
-
     }
 
     function removeHost(i, status){
-
       if(status == "WAR"){
         var parent = document.getElementById("warHosts");
         var child = document.getElementById(hostStatus[i].nagios_host_name+"-WAR");
@@ -604,41 +423,43 @@ LINES[12].line.setMap(map);
       }
       child.style.maxHeight = 0;
       child.style.opacity = 0;
-
       setTimeout( function() {parent.removeChild(child);}, 900);
-
     }
 
     for (var i = 0; i < hostStatusPre.length; i++) {
       var name = hostStatusPre[i].nagios_host_name;
-
       var insert = ("style=\"font-size: 20px;\">" + hostStatusPre[i].alias + " - (Waiting)</div>");
-
       if(hostStatusPre[i].status == 1){
-        document.getElementById('warHosts').insertAdjacentHTML("afterbegin", "<div class=\"changesBarLine WAR news\" id=\"" + name + "-WAR\"" + insert);
+        document.getElementById('warHosts').insertAdjacentHTML("afterbegin", "<div onclick=\"openPopup("+i+", true);\" class=\"changesBarLine WAR news\" id=\"" + name + "-WAR\"" + insert);
       }
       if(hostStatusPre[i].status == 2){
-        document.getElementById('critHosts').insertAdjacentHTML("afterbegin", "<div class=\"changesBarLine CRIT news\" id=\"" + name + "-CRIT\"" + insert);
+        document.getElementById('critHosts').insertAdjacentHTML("afterbegin", "<div onclick=\"openPopup("+i+", true);\" class=\"changesBarLine CRIT news\" id=\"" + name + "-CRIT\"" + insert);
       }
       if(hostStatusPre[i].status == 3){
-        document.getElementById('downHosts').insertAdjacentHTML("afterbegin", "<div class=\"changesBarLine DOWN news\" id=\"" + name + "-DOWN\"" + insert);
+        document.getElementById('downHosts').insertAdjacentHTML("afterbegin", "<div onclick=\"openPopup("+i+", true);\" class=\"changesBarLine DOWN news\" id=\"" + name + "-DOWN\"" + insert);
       }
     }
-
-    hostStatusPre = [];
+    realTimeUp = true;
 
   </script>
   <script src="resources/js/jquery.min.js"></script>
-
   <script type="text/javascript" src="resources/js/functions.min.js"></script>
-
   <script src="resources/toastr/toastr.min.js"></script>
-
   <script src="resources/sa/sweetalert2.all.min.js"></script>
-
   <script type="text/javascript" src="resources/js/bootstrap-slider.min.js"></script>  
-
   <script type="text/javascript">
+
+    $(document).on("click", function(e) {
+      var divNome = document.querySelector(".gm-style-iw");
+      if(divNome){
+        var fora = !divNome.contains(e.target);
+        if (fora && !clicked){
+          for(i = 0; i < INFO.length ; i++){
+            INFO[i].close(map);
+          } 
+        }
+      }
+    });
     toastr.options = {
       "closeButton": false,
       "debug": false,
@@ -657,8 +478,25 @@ LINES[12].line.setMap(map);
       "hideMethod": "fadeOut"
     };
 
-    var _paq = _paq || [];_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);_paq.push(["setCookieDomain", "*.jocafamaka.github.io"]);_paq.push(['trackPageView']);_paq.push(['enableLinkTracking']);(function() {var u="//analytics.nagmapreborn.com/"; _paq.push(['setTrackerUrl', u+'piwik.php']);_paq.push(['setSiteId', '1']);var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);})();
+    function filterBy(self){
+      $('#searchBar').val($(self).children().next().next().text().substring(1));
+      search();
+    };
 
+    $('#searchBar').keyup(function(){
+      search();
+    });
+
+    function search(){
+      var query = $('#searchBar').val().toLowerCase();
+      $('#changesbar .changesBarLine').each(function(){
+        var $this = $(this);
+        if($this.text().toLowerCase().indexOf(query) === -1)
+         $this.closest('#changesbar .changesBarLine').hide();
+       else 
+        $this.closest('#changesbar .changesBarLine').show();
+    });
+    };
   </script>
 </body>
 </html>

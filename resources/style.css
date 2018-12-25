@@ -19,11 +19,10 @@ body {
 	height: 100%
 }
 
-
 #loader {
 	position: fixed;
 	border-radius: 50%;
-	z-index: 1000;
+	z-index: 1234567;
 	display: none;
 	background-color: #2371b3;
 	transition: width 1s linear, height 1s linear, opacity 1s linear;

@@ -118,7 +118,7 @@
                 cookiePath: "/",
                 debug: !1,
                 expires: 1 / 0,
-                zindex: 1e20,
+                zindex: 132154,
                 mask: !1,
                 maskOpacity: .5,
                 maskBackground: "#999",

@@ -6,7 +6,7 @@
 -->
 
 <!DOCTYPE html> 
-<html class="no-js"> 
+<html> 
 <head> 
 	<meta charset="utf-8"> 
 	<title>NagMap Reborn - Live Preview</title>  
@@ -253,6 +253,7 @@
 				window.location.replace("live.html?icons="+icons+"&lines="+lines+"&type="+type+"&size="+sizeBar);
 			}, 1000);
 			$('#loader').show().width(((window.innerWidth > window.innerHeight)? window.innerWidth : window.innerHeight) + 250).height(((window.innerWidth > window.innerHeight)? window.innerWidth : window.innerHeight) + 250);
+			$(".cookieinfo").first().css("zIndex","1");
 		}
 
 		$('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');

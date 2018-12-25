@@ -59,12 +59,12 @@
       "Host_5": {"status": -1, "time": "(elapsed time)"},
       "Host_6": {"status": -1, "time": "(elapsed time)"},
       "Host_7": {"status": -1, "time": "(elapsed time)"},
-      "Host_8": {"status": -1, "time": "(elapsed time)"},
       "Host_9": {"status": -1, "time": "(elapsed time)"},
       "Host_10": {"status": -1, "time": "(elapsed time)"},
       "Host_11": {"status": -1, "time": "(elapsed time)"},
       "Host_12": {"status": -1, "time": "(elapsed time)"},
-      "Host_13": {"status": -1, "time": "(elapsed time)"}
+      "Host_13": {"status": -1, "time": "(elapsed time)"},
+      "Host_14": {"status": -1, "time": "(elapsed time)"}
     };
 
     for(var i = 0; i < (Math.floor(Math.random() * 6) + 1) ; i++){
@@ -92,7 +92,7 @@
 
   function changeSize(size){
     if(size >= 25 && size <= 50){
-      $('#map_canvas').height(100-size + '%');
+      $('#map').height(100-size + '%');
       $('#changesbar').height(size + '%');
     }
   };
@@ -119,8 +119,8 @@
       showCancelButton: true,
       showConfirmButton: false,
       inputOptions:{
-        '0': '<img class="al113x114" title="Project on GitHub" onclick="window.open(\'https://github.com/jocafamaka/nagmapReborn\'); swal.close();" src="resources/img/ProjectIcon.png">',
-        '1': '<img class="al113x114" title="Change" onclick="change();" src="resources/img/RestartIcon.png">'
+        '0': '<img class="al122x122 grow" title="Project on GitHub" onclick="window.open(\'https://github.com/jocafamaka/nagmapReborn\'); swal.close();" src="resources/img/ProjectIcon.png">',
+        '1': '<img class="al122x122 grow" title="Change" onclick="change();" src="resources/img/RestartIcon.png">'
       }
     })
   };
