@@ -119,8 +119,8 @@
       showCancelButton: true,
       showConfirmButton: false,
       inputOptions:{
-        '0': '<img class="al122x122 grow" title="Project on GitHub" onclick="window.open(\'https://github.com/jocafamaka/nagmapReborn\'); swal.close();" src="resources/img/ProjectIcon.png">',
-        '1': '<img class="al122x122 grow" title="Change" onclick="change();" src="resources/img/RestartIcon.png">'
+        '0': '<img class="al122x122 grow" title="Project on GitHub" onclick="window.open(\'https://github.com/jocafamaka/nagmapReborn\'); swal.close();" src="resources/img/project.png">',
+        '1': '<img class="al122x122 grow" title="Change" onclick="change();" src="resources/img/reset.png">'
       }
     })
   };
