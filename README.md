@@ -1,9 +1,9 @@
-# Live Preview of NagMap Reborn
+# Live Preview of Nagmap Reborn
 
-[See here](https://github.com/jocafamaka/nagmapReborn) the project.
+[See here](https://github.com/jocafamaka/NagmapReborn) the project.
 
-[See here](https://jocafamaka.github.io) the NagMap Reborn live preview:
-[![NagMap Reborn live preview](https://i.imgur.com/Mc26Pn5.png)](https://jocafamaka.github.io)
+[See here](https://jocafamaka.github.io) the Nagmap Reborn live preview:
+[![Nagmap Reborn live preview](https://i.imgur.com/sTG8YBV.jpg)](https://jocafamaka.github.io)
 
 ## Donation
 As an Information Systems student about to graduate me, I use my free time to bring updates and improvements to the project, without any financial purpose.
